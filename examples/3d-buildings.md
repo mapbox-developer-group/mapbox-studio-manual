@@ -1,7 +1,7 @@
 ---
-title: Add 3D buildings
-description: Use a fill extrusion layer to add 3D buildings to a map in Mapbox Studio.
-topic: Map design
+标题: 添加3D建筑
+描述: 在Mapbox Studio中通过使用一个挤压填充的的图层在地图上添加3D建筑。
+主题: 地图设计
 image: thumbnail-add-3d-buildings
 prependJs:
   - "import StudioExample from '../../components/studio-example';"
@@ -17,11 +17,11 @@ language:
     username="mapbox"
     styleId="cjk8m59xg8jzh2rlko4vlrq4h"
     mapPosition={{
-      zoomLevel: "15.35",
-      centerLatitude: "40.754951",
-      centerLongitude: "-73.986714",
-      bearing: "9.60",
-      pitch: "60"
+      缩放级别: "15.35",
+      中心点纬度: "40.754951",
+      中心点经度: "-73.986714",
+      水平方位: "9.60",
+      倾斜角度: "60"
     }}
     relevantJson={{
       codeCaption: "Building height expression:",
@@ -30,10 +30,10 @@ language:
       propertyName: "fill-extrusion-height"
     }}
     specs={[
-      <p>This is a modified version of the <strong>Basic template</strong> style.</p>,
-      <p>The data used in this example comes from the <code>mapbox-streets-v7</code> tileset.</p>,
-      <p>The <code>building</code> layer has changed to a <code>fill extrusion</code> layer type and the style properties have been modified.</p>,
-      <p>The <strong>Light</strong> option in the toolbar has been modified.</p>
+      <p>这是一个基础版本样式的修改版</p>,
+      <p>示例中使用的数据来源为 <code>mapbox-streets-v7</code> 瓦片级.</p>,
+      <p><code>建筑</code> 图层已经被修改为<code>挤压填充</code> 图层类型，并且样式属性已经被修改.</p>
+      <p>工具栏中的 <strong>光</strong> 选项已经被修改.</p>
     ]}
   />
 </GLWrapper>
