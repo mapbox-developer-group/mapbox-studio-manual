@@ -1,7 +1,7 @@
 ---
-title: Apply conditional labels
-description: Check if a data property exists and if it does not display a different label.
-topic: Map design
+标题: 条件标签的应用
+描述: 检查数据属性是否存在，是否显示不同的标签。
+主题: 地图设计
 image: thumbnail-conditional-labels
 prependJs:
   - "import StudioExample from '../../components/studio-example';"
@@ -30,20 +30,20 @@ language:
       propertyName: "text-field"
     }}
     specs={[
-      <p>This is a modified version of the <strong>Basic template</strong> style.</p>,
-      <p>The data used in this example comes from the <code>mapbox-streets-v7</code> tileset.</p>,
-      <p>The <code>airport-label</code> layer, a <code>symbol</code> layer, has been modified.</p>,
-      <p>Airport labels are styled using property expressions to <strong>style features with a data condition</strong>. Labels will include both the full name and the short code <em>if the short code is available</em>.</p>
+      <p>这是一个 <strong>基础版本</strong> 样式的修改版.</p>,
+      <p>示例中使用的数据来源为 <code>mapbox-streets-v7</code> 瓦片集.</p>,
+      <p><code>航空站-标签</code> 图层, <code>符号</code> 图层已经被修改.</p
+      <p>使用属性表达式对航空站标签进行样式化，以对具有数据条件的特性进行样式化. 如果短标识符可以使用，那么此便签将同时包含完整名称和短标识符.</p>
     ]}
   />
 </GLWrapper>
 }}
 
-## About this style
+## 关于此样式
 
-- **Label data**: The data for airport labels comes from the `mapbox-streets-v7` tileset. The `ref` field contains short identifier codes for many airports, but not all airports. Read more about [Mapbox Streets in the vector tile documentation](https://www.mapbox.com/vector-tiles/).
-- **Styling with expressions**: In this example, the airport labels are styled using property expressions to style features using a data condition. Open the `airport-label` layer to see how to check whether a data property exists (in this case the `ref` property). If the property does exist, the label displays the full name (`name`) along with the `ref`. If the `ref` property does not exist, the label displays the `name` value. Read more about styling with data conditions [in the Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-js/style-spec#expressions-decision).
+- **Label data**: 航空站标签的数据来源为 `mapbox-streets-v7` 瓦片集。 `ref` 字段许多航空站（但不是所有航空站）的短标识符代码。 阅读更多关于 [矢量瓦片文档中的Mapbox Streets](https://www.mapbox.com/vector-tiles/)。
+- **使用表达式进行样式设置**: 在此示例中，使用属性表达式对航空站标签进行样式化，从而使用数据条件对特性进行样式化。打开 `航空站-标签` 图层检查数据属性是否存在 (在本示例中的 `ref` 属性)。 如果属性确实存在，标签将显示完整名称 (`name`)和 `ref` 。如果 `ref` 属性不存在，标签将显示 `name` 值。 [在 Mapbox 样式规范]中阅读更多关于数据条件样式化的更多信息(https://www.mapbox.com/mapbox-gl-js/style-spec#expressions-decision).
 
-## Related resources
+## 相关资源
 
-**Looking for more guidance?** Read our [tutorials](https://www.mapbox.com/help/tutorials/#map-design).
+**需要更多指导吗？** 阅读我们的 [教程](https://www.mapbox.com/help/tutorials/#map-design).
