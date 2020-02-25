@@ -1,23 +1,21 @@
 ---
-title: Reference
+标题: 参考目录
 order: 1
-description: Learn about the Mapbox Studio interface.
+描述: 了解Mapbox Studio的界面.
 prependJs:
 - "import Icon from '@mapbox/mr-ui/icon';"
 - "import ChevronousText from '@mapbox/mr-ui/chevronous-text';"
 contentType: reference
 ---
-
-The navigation at the top of the Studio page shows the different sections of Mapbox Studio:
-
-- **Styles**. Create, manage, and edit your map [styles](/studio-manual/reference/styles/).
-- **Tilesets**. Create, upload, and manage your [tilesets](/studio-manual/reference/tilesets/).
-- **Datasets**. Create, upload, and manage your [datasets](/studio-manual/reference/datasets/).
+在Studio页面的顶部导航栏展示了Mapbox Studio的不同菜单：
+- **工作室**. 创建、管理和编辑你的地图 [样式](/studio-manual/reference/styles/).
+- **瓦片集**. 创建、上传和管理你的 [瓦片集](/studio-manual/reference/tilesets/).
+- **数据集**. 创建、上传和管理你的 [数据集](/studio-manual/reference/datasets/).
 
 
-## Styles
+## 工作室
 
-From the [**Styles** page](https://www.mapbox.com/studio/styles) you can create, edit, and see information about any of your [styles](https://www.mapbox.com/help/define-style) and find links for using your styles in web and mobile applications. For more information on styles and the Mapbox Studio style editor, see the **Styles** section of this manual.
+在 [**工作室** 页面](https://www.mapbox.com/studio/styles) 你可以创建、编辑和查看你的 [样式] 的任何信息(https://www.mapbox.com/help/define-style) ，并且你可以找到在Web和手机应用中使用样式的链接。有关工作室和Mapbox Studio样式编辑器的更多信息，请查看本手册关于 **工作室** 的部分。
 
 {{
   <a href='/studio-manual/reference/styles/' className="unprose txt-bold link">
@@ -25,9 +23,9 @@ From the [**Styles** page](https://www.mapbox.com/studio/styles) you can create,
   </a>
 }}
 
-## Tilesets
+## 瓦片集
 
-The [**Tilesets** page](https://www.mapbox.com/studio/tilesets) is where you can add and see information about your uploaded and exported tilesets. For more information on tilesets, see the **Tilesets** section of this manual.
+在 [**瓦片集** 页面](https://www.mapbox.com/studio/tilesets) 你可以添加、查看你上传或者导出的瓦片集信息。有关瓦片集的更多信息，请查看本手册关于 **瓦片集** 的部分。
 
 {{
   <a href='/studio-manual/reference/tilesets/' className="unprose txt-bold link">
@@ -35,9 +33,9 @@ The [**Tilesets** page](https://www.mapbox.com/studio/tilesets) is where you can
   </a>
 }}
 
-## Datasets
+## 数据集
 
-The [**Datasets** page](https://www.mapbox.com/studio/datasets) is where you can create, edit, and see information about your datasets. For more information on datasets and the Mapbox Studio dataset editor, see the **Datasets** section of this manual.
+在 [**数据集** 页面](https://www.mapbox.com/studio/datasets) 你可以创建、编辑和查看你的数据集的信息。 有关数据集和数据集编辑器的更多信息，请查看本手册关于 **数据集** 的部分.
 
 {{
   <a href='/studio-manual/reference/datasets/' className="unprose txt-bold link">
