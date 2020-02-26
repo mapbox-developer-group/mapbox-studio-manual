@@ -1,6 +1,6 @@
 ---
-title: Adjust the zoom extent of your tileset
-description: Learn how to manually adjust the zoom extent of your tilesets.
+title: 调整瓦片的缩放范围
+description: 学习如何手动调节瓦片的缩放范围。
 topics:
 - uploads
 - data
@@ -11,47 +11,47 @@ prependJs:
 contentType: troubleshooting
 ---
 
-When you upload data to your Mapbox account as a [tileset](/help/glossary/tileset), you may notice that your data has been **simplified** or that it **is not rendered at all zoom levels**. The Mapbox Streets source data is also limited to specific zoom levels. This guide provides an explanation for why this happens. It also describes some techniques for manually adjusting the zoom extent of your tilesets and for adding your own sources with custom zoom levels.
+当您以 [tileset](/help/glossary/tileset) 的形式将数据上传到 Mapbox 账户中, 可能会注意到您的数据被 **简化** 或者 **不能在全缩放值下进行渲染**。Mapbox Streets 源数据也被限制在了指定的缩放范围。下面一起看看为什么会发生这样的情况，以及一些可以手动调整图块集的缩放范围以及使用自定义缩放级别添加自己的数据源的技术。
 
-## Why this happens
+## 为什么会发生这样的情况
 
-Data simplification and zoom level limiting make your map load faster and limit the file size of the resulting tileset.
+数据简化和缩放级别限制可以让地图加载更快，并限制了生成的瓦片文件大小。
 
-### Vector data simplification
+### 矢量数据简化
 
-Simplification at lower zoom levels reduces complexity on the map in places where the details would not even be noticed. This simplification makes the map load more efficiently.
+较低缩放级别的简化会降低地图上甚至根本不会注意到细节的复杂性，这种简化使地图加载更加有效。
 
-The amount of data that can exist in a single vector tile has an upper size limit. By simplifying complex vector features during the upload process, we make sure each tile in your vector tileset falls below this upper limit and will display correctly on your maps.
+单个矢量瓦片中可以存在的数据量大小有上限，通过在上传过程中简化复杂的矢量特征，我们确保矢量瓦片集中的每个图块都低于此上限，并且将正确显示在地图上。
 
-### Minimum and maximum zoom levels
+### 缩放值的最大和最小值
 
-Sometimes, it is not possible to display data legibly at a given zoom level. For example, a dense series of topographic lines would turn into a jumble of features when viewing the map at a low zoom level. Conversely, lower-resolution data would appear too coarse at high zoom levels. To prevent both of these potential issues, the Mapbox Uploads API analyzes your data and automatically determines the maximum and minimum zoom levels at which tiles should be rendered.
+有时我们无法以给定的缩放级别清晰显示数据。例如，当以低缩放级别查看地图时，一系列密集的地形线将变成一堆特征。相反，低分辨率的数据在高缩放级别下显得过于粗糙。为避免这两个潜在问题，Mapbox Uploads API 会分析您的数据并自动确定应渲染图块的最大和最小缩放级别。
 
-For raster tilesets, the uploaded image resolution sets the minzoom and maxzoom levels. Higher resolution images will result in the tileset rendering at more zoom levels.
+对于栅格瓦片集，上载的图像分辨率可设置最小缩放和最大缩放级别。较高分辨率的图像可以呈现更高的缩放级别。
 
-_Note: regardless of maximum zoom level, data can be [overzoomed](/help/glossary/overzoom/) and visualized to zoom 22._
+_Note: 除了最大缩放等级，数据可以被 [overzoomed](/help/glossary/overzoom/) 到 22 级。_
 
-## Adjust the zoom extent of your tileset
+## 调整瓦片的缩放范围
 
-There are two techniques for adjusting the zoom extent of your tilesets: [using Tippecanoe to transform the data](#transform-data-with-tippecanoe), or [using the Tilesets API to update a tileset's recipe](#update-zoom-extent-in-a-tilesets-recipe). Tileset recipes and the Tilesets API endpoint used to update them are in beta and are subject to potential changes.  
+有两种技术可以调整瓦片的缩放范围：[使用 Tippecanoe 对数据做转化](#transform-data-with-tippecanoe), 或者[使用 Tilesets API to 对瓦片配方进行更新](#update-zoom-extent-in-a-tilesets-recipe)。瓦片配方和用于更新它们的 Tilesets API 是 beta 版本，可能会发生更改。 
 
-### Transform data with Tippecanoe
-Much of the data behind Mapbox Streets comes from OpenStreetMap. You can download this data using [Overpass Turbo](/help/tutorials/overpass-turbo/#use-overpass-turbo) and adjust its zoom level options with [Tippecanoe](https://github.com/mapbox/tippecanoe), a command-line utility for converting complex data into vector tiles. To download, prepare, and upload data from OpenStreetMap to your Mapbox account:
+### 使用 Tippecanoe 对数据做转化
+Mapbox Streets 的很多数据来自 OpenStreetMap。你可以使用 [Overpass Turbo](/help/tutorials/overpass-turbo/#use-overpass-turbo) 下载数据并使用 [Tippecanoe](https://github.com/mapbox/tippecanoe) ，一个用于将复杂数据转换为矢量切片的命令行实用程序来调整缩放选项。要将数据从OpenStreetMap 下载，准备并上传到您的 Mapbox 帐户，请执行以下操作：
 
-1. Download the data you want to work with using [Overpass Turbo](/help/tutorials/overpass-turbo/#use-overpass-turbo).
-2. Install Tippecanoe using the command line. First, install [Homebrew](https://brew.sh/), then run `brew install tippecanoe`.
-3. Create your tileset using Tippecanoe's zoom level options. For example, to set the minimum zoom to 2 and maximum zoom to 7, the command would look something like this:
+1. 使用 [Overpass Turbo](/help/tutorials/overpass-turbo/#use-overpass-turbo) 下载您需要的数据。
+2. 使用命令行安装 Tippecanoe。首先安装 [Homebrew](https://brew.sh/)，然后运行 `brew install tippecanoe`。
+3. 使用 Tippecanoe 的缩放等级选项创建您的瓦片。比如，将最小缩放值设置为 2，最大缩放值设置为 7，命令行看起来是这样的：
 ```
 tippecanoe -o geography_regions.mbtiles -Z 2 -z 7 Documents/geography_regions.geojson
 ```
-4. Upload the [MBTiles](/help/glossary/mbtiles/) file you created in step 3 to your Mapbox account as a tileset.
+4. 上传在步骤 3 中创建的 [MBTiles](/help/glossary/mbtiles/) 文件到 Mapbox 账户中作为瓦片。
 
-For more details on installing and using Tippecanoe to transform your data, read the [Manage large data files for Mapbox Studio with Tippecanoe](/help/troubleshooting/large-data-tippecanoe) guide.
+更多安装和使用技巧请阅读 [Manage large data files for Mapbox Studio with Tippecanoe](/help/troubleshooting/large-data-tippecanoe)  指导。
 
-### Update zoom extent in a tileset's recipe
+### 在瓦片配方中更新缩放范围
 
 {{<Note title='Tilesets API public beta' theme="beta">}}
-The Tilesets API features discussed in this section are in public beta and are subject to potential changes.
+本节中讨论的 Tilesets API 功能已公开发布，并且可能会发生更改。
 {{</Note>}}
 
-You can also use the Mapbox Tilesets API to update a tileset's zoom extent in its [tileset recipe](/help/glossary/tileset-recipe/). You can do this using the [Tilesets CLI](https://github.com/mapbox/tilesets-cli/blob/master/README.md#update-recipe) or by using the [Tilesets API](https://docs.mapbox.com/api/maps/#update-a-tilesets-recipe) directly. For more information on zoom level configuration in tileset recipes, see the [Tileset recipe reference](/help/troubleshooting/tileset-recipe-reference/#zoom-level-configuration) and the [Basic recipe using zoom levels example](https://docs.mapbox.com/help/troubleshooting/tileset-recipe-examples/#basic-recipe-using-zoom-levels).
+您也可以使用 Mapbox Tilesets API，在 [tileset recipe](/help/glossary/tileset-recipe/) 中更新瓦片的缩放范围。您可以使用 [Tilesets CLI](https://github.com/mapbox/tilesets-cli/blob/master/README.md#update-recipe) 或者直接使用 [Tilesets API](https://docs.mapbox.com/api/maps/#update-a-tilesets-recipe)。想要了解更多缩放等级配置的信息，请参考  [Tileset recipe reference](/help/troubleshooting/tileset-recipe-reference/#zoom-level-configuration) 和 [Basic recipe using zoom levels example](https://docs.mapbox.com/help/troubleshooting/tileset-recipe-examples/#basic-recipe-using-zoom-levels)。
