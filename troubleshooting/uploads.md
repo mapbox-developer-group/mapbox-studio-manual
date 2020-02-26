@@ -1,6 +1,6 @@
 ---
-title: Upload data to Mapbox
-description: Learn how to prepare data for upload, interpret error messages, and troubleshoot failed uploads.
+title: 往 Mapbox 上传数据
+description: 了解如何准备要上传的数据，解释错误消息以及对失败的上传进行故障排除。
 topics:
 - uploads
 prependJs:
@@ -10,39 +10,39 @@ contentType: troubleshooting
 
 {{<Note title='Beta feature: Upload vector tilesets with the Tilesets API' theme="beta">}}
 
-The [Mapbox Tilesets API](https://docs.mapbox.com/api/maps/#tilesets) has several beta endpoints that allow you to create custom vector tilesets. You can use these endpoints as an alternative to the Uploads API for tiling vector data using custom configuration rules. While these endpoints are in beta, they are subject to potential changes.
+[Mapbox Tilesets API](https://docs.mapbox.com/api/maps/#tilesets) 具有多个 beta 端点，可用于创建自定义矢量 tileset。您可以使用这些端点来替代 Uploads API，以使用自定义配置规则来平铺矢量数据。这些端点处于 beta 状态时，它们可能会发生变化。
 
 {{</Note>}}
 
-If you want to upload your data to Mapbox, you've come to the right place! From GeoTIFFs to Shapefiles, whether you want to edit your data or style it on a map, this guide outlines the different types of data you can upload, techniques for uploading, and common pitfalls and how to troubleshoot them.
+如果您想将数据上传到 Mapbox，那么您来对地方了！从 GeoTIFF 到 Shapefile，无论是要编辑数据还是在地图上设置样式，本指南都概述了可以上传的数据的不同类型，上传的技术以及常见的陷阱以及如何对它们进行故障排除。
 
 ## Datasets vs. tilesets
 
-[**Datasets**](/help/glossary/dataset) and [**tilesets**](/help/glossary/tileset) are two different types of files that you can create when uploading data to your Mapbox account.
+[**Datasets**](/help/glossary/dataset) 和 [**tilesets**](/help/glossary/tileset) 是将数据上传到 Mapbox 帐户时可以创建的两种不同类型的文件。
 
-**Datasets** provide access to feature geometries (points, lines, and polygons) and properties (attributes), both of which **can be edited** in the Mapbox Studio [dataset editor](https://www.mapbox.com/studio/datasets/) or through the [Mapbox Datasets API](https://docs.mapbox.com/api/maps/#datasets).
+**Datasets** 提供对要素几何（点，线和面）和属性的访问，都可以在 Mapbox Studio [dataset editor](https://www.mapbox.com/studio/datasets/) 中进行编辑或通过 [Mapbox Datasets API](https://docs.mapbox.com/api/maps/#datasets)。
 
-**Tilesets** are lightweight collections of vector data that are optimized for rendering and **are not editable** but can be styled in the Mapbox Studio style editor.
+**Tilesets** 是针对渲染而优化的矢量数据的轻量级集合，并且是不可编辑的，但可以在 Mapbox Studio 样式编辑器中设置样式。
 
-## Uploads
+## 上传
 
-Techniques for uploading datasets and tilesets are listed below. The size of your data file will affect how much can be transferred at one time. See the section on [transfer limits](#accepted-file-types-and-transfer-limits) to know which method is right for you.
+下面是一些上传数据集和矢量瓦片集的技术。数据文件的大小将影响一次可以传输的数量。请参阅[transfer limits](#accepted-file-types-and-transfer-limits) ，以了解哪种方法最适合您。
 
 ### Datasets
 
-To add your data to a _dataset_, you can create a new, blank dataset through Mapbox Studio or through the Mapbox Datasets API and then add data to it. Note that the Mapbox Datasets API does not date GeoJSON files as uploads, but rather as the body of a POST request. See the [Mapbox Datasets API documentation](https://docs.mapbox.com/api/maps/#datasets) for more information.
+要将数据添加到 _dataset_ ，您可以通过 Mapbox Studio 或 Mapbox Datasets API 创建一个新的空白数据集，然后向其中添加数据。请注意，Mapbox Datasets API 不会将 GeoJSON 文件标为上传，而是标为 POST 请求的正文。有关更多信息，请参见 [Mapbox Datasets API documentation](https://docs.mapbox.com/api/maps/#datasets)。
 
 ### Tilesets
 
-You can upload your data as a _tileset_ through:
+您可以通过下面的方式将数据上传为 _tileset_ ：
 
-- The [Mapbox Studio style editor](https://www.mapbox.com/studio-manual/reference/styles/)
-- Your [tilesets page](https://www.mapbox.com/studio/tilesets/) in Mapbox Studio
-- The [Mapbox Uploads API](https://docs.mapbox.com/api/maps/#uploads)
+- [Mapbox Studio style editor](https://www.mapbox.com/studio-manual/reference/styles/)
+- Mapbox Studio 中的 [tilesets page](https://www.mapbox.com/studio/tilesets/)
+- [Mapbox Uploads API](https://docs.mapbox.com/api/maps/#uploads)
 
-## Accepted file types and transfer limits
+## 可接受的文件类型和传输限制
 
-The accepted file types and transfer limits for dataset and tileset uploads include:
+可接受文件类型和传输限制包括：
 
 |File type|Datasets|Tilesets|Transfer limits
 |---|:---:|:---:|:---:|
@@ -54,40 +54,40 @@ The accepted file types and transfer limits for dataset and tileset uploads incl
 | [Shapefile](/help/glossary/shapefile) | | <span style="line-height: 0;" class="color-green inline round"><svg class='icon h30 w30 inline-block align-middle'><use xlink:href='#icon-check'/></svg></span> | 260 Mb (combined uncompressed size of `.shp` and `.dbf` files). You must upload shapefiles as a compressed (`.zip`) file.  |
 | [GeoTIFF](/help/glossary/tiff) | | <span style="line-height: 0;" class="color-green inline round"><svg class='icon h30 w30 inline-block align-middle'><use xlink:href='#icon-check'/></svg></span> | 10 GB |
 
-If your file size exceeds these limits, see the [Troubleshooting](#troubleshooting) section below.
+如果您的文件超过了限制, 查看下面的 [Troubleshooting](#troubleshooting) 部分。
 
 {{<Note title='Dataset and dataset editor limits'>}}
-An extra note on dataset uploads: Multiple files can be uploaded to the same dataset without limit — they need to be loaded 5 MB at a time in the [Mapbox Studio dataset editor](https://docs.mapbox.com/studio-manual/reference/datasets/). The size of a dataset is unlimited, but the Mapbox Studio dataset editor can only display datasets of 20 MB or smaller. Datasets that exceed 20 MB can still be downloaded from Mapbox Studio and accessed through the [Mapbox Datasets API](https://docs.mapbox.com/api/maps/#datasets).
+关于数据集上传的额外说明：多个文件可以无限制地上传到同一数据集-需要在 [Mapbox Studio dataset editor](https://docs.mapbox.com/studio-manual/reference/datasets/) 中一次加载 5 MB。数据集的大小不受限制，但是 Mapbox Studio 数据集编辑器只能显示 20 MB 或更小的数据集。不过您仍然可以从Mapbox Studio 下载超过 20 MB 的数据集，并通过 [Mapbox Datasets API](https://docs.mapbox.com/api/maps/#datasets)进行访问。
 {{</Note>}}
 
 {{<Note title='Raster tilesets in Mapbox Studio'>}}
-When uploading raster MBTiles to Mapbox Studio, be sure to use 512x512 tiles.
+将栅格 MBTiles 上传到 Mapbox Studio 时，请确保使用 512x512 切片。
 {{</Note>}}
 
-## TIFF uploads
+## 上传 TIFF
 
-There are a couple requirements for TIFFs:
+对 TIFFs 有一些要求:
 
-- Only 8-bit GeoTIFFs are supported. Run `gdalinfo` to find your GeoTIFF's resolution.
-- Mapbox only accepts TIFFs with georeferencing information (GeoTIFFs). Make sure your TIFF is georeferenced before trying to upload.
+- 只支持 8-bit 的 GeoTIFFs。运行 `gdalinfo` 来确认您的 GeoTIFF 分辨率。
+- Mapbox 只接受包含地理信息的 TIFFs (GeoTIFFs)。
 
-If you are attempting to upload large TIFFs (multi GBs), here are some ways you can optimize your TIFF **before** uploading:
+如果您尝试上传大型 TIFF（多个 GB），可以通过以下几种方法上传：
 
-- Reproject to Web Mercator `EPSG:3857`.
-- Set blocksize to `256x256`.
-- If compression is needed, use `LZW`.
-- Remove Alpha band, if applicable.
+- 重新投影到 Web Mercator`EPSG：3857`。
+- 将块大小设置为`256x256`。
+- 如果需要压缩，请使用 `LZW`。
+- 删除 Alpha 频段（如果适用）。
 
-## Errors
+## 错误
 
-Upload failures directly in Mapbox Studio typically occur for two reasons:
+直接在 Mapbox Studio 中直接上传失败的原因通常有两个：
 
-1. There's an explicit issue with your data.
-1. The data didn't process within one hour (two hours for MBTiles files).
+1. 您的数据存在明显的问题。
+2. 数据在一小时内未处理（MBTiles 文件为两小时）。
 
-If there is an explicit issue with your data, you will receive a descriptive error message when the upload fails. Each message includes an error code that is described in full below. If your upload times out, read through the [troubleshooting recommendations below](#troubleshooting).
+如果您的数据存在明显问题，则上传失败时，您将收到描述性错误消息。每条消息都包含一个错误代码，下面将对其进行全面介绍。如果您的上传超时，请仔细阅读[troubleshooting recommendations below](#troubleshooting)。
 
-### Tileset upload errors
+### Tileset 上传错误信息
 
 Message | Description | Solution
 --- | --- | ---
@@ -107,55 +107,55 @@ Message | Description | Solution
 `Tile size exceeds limit. At least one vector tile is larger than 5MB.`|While generating tiles from your upload, at least one tile was larger than 5MB, which is too large.|Try simplifying your data where it is most dense. This typically happens with CSV point datasets where there are many millions of points in a single tile. Try using [Tippecanoe](https://github.com/mapbox/tippecanoe/#dropping-a-fraction-of-features-to-keep-under-tile-size-limits) to simplify and cluster points before uploading.
 `Invalid tile based on the Mapbox Vector Tile spec: ClosePath command count is not 1` or `Invalid tile based on the Mapbox Vector Tile spec: Max count too large` | One of the tiles in your MBTiles file is invalid according to the Mapbox Vector Tile Specification|We need to make sure all vector tiles conform to the specification, so this makes sure any encoders are doing their job correctly. If you see this, please reach out to help@mapbox.com with the error message and we'll help you move forward.
 
-### Dataset upload errors
+### Dataset 上传错误信息
 
-Most dataset upload errors are related to syntax. Be sure to check your data for syntax errors before uploading. If you are working with GeoJSON data, consider using a tool like [`geojsonhint`](https://github.com/mapbox/geojsonhint) to lint your data before uploading. If your error is specifically related to a CSV upload, you can view our [CSV file errors troubleshooting guide](/help/troubleshooting/csv-upload-errors/) or investigate further by checking out [the library](https://github.com/mapbox/csv2geojson) we use to convert CSV files to GeoJSON.
+大多数数据集上传错误与语法有关。上传之前，请务必检查数据中是否存在语法错误。如果您使用的是 GeoJSON 数据，请考虑在上传之前使用类似[`geojsonhint`](https://github.com/mapbox/geojsonhint) 的工具来整理数据。如果您的错误与 CSV 上传特别相关，则可以查看我们的[CSV file errors troubleshooting guide](/help/troubleshooting/csv-upload-errors/) 或通过这个 [the library](https://github.com/mapbox/csv2geojson) ，我们用于将 CSV 文件转换为GeoJSON。
 
 Message | Description | Solution
 --- | --- | ---
 `Input failed old-style crs member is not recommended` | Your dataset contains a [crs attribute](https://macwright.org/2015/03/23/geojson-second-bite#projections). | Remove the crs attribute from your data before uploading.
 `Input failed. Datasets don't support GeometryCollections or null geometries.` | Your dataset contains one or more [GeometryCollections](http://geojson.org/geojson-spec.html#geometrycollection) and/or a geometry that is set to null. | GeometryCollections and null geometries are not supported and must be removed from your dataset.
 
-## Troubleshooting
+## 故障排除
 
-If you receive a `Processing timed out.` message after a lengthy "processing" status, it is likely because your file has taken more than one hour (two hours for MBTiles files) to process and has timed out. To keep our upload queue fresh, we limit the time it takes for particularly large uploads. The following techniques can be used to update your data to improve processing time.
+如果在长时间的“处理中”状态后收到 `Processing timed out.` 消息，则可能是因为您的文件已花费了一个多小时（MBTiles 文件为两个小时）来处理并超时。为了使上传队列保持最新状态，我们限制了特别大的上传所花费的时间。以下技术可用于更新数据以缩短处理时间。
 
-_Note: the troubleshooting advice here mostly relates to **tilesets**, although some may be applicable to **datasets** as well. If you are having trouble uploading datasets and your issue is not listed here, please [contact support](https://www.mapbox.com/contact)._
+_Note: 尽管此处的一些故障排除建议也可能适用于 **datasets**，但此处的故障排除建议主要与 **tilesets** 有关。如果您在上传数据集时遇到问题，但此处未列出您的问题，请 [contact support](https://www.mapbox.com/contact)。_
 
-### Prevent feature duplication
+### 防止功能重复
 
-Preventing feature duplication is important if you plan to use the [Tilequery API](https://docs.mapbox.com/api/maps/#tilequery) with a custom tileset. Feature duplication in a tileset can lead to unexpected duplicate results when using the Tilequery API with the tileset, even when the `dedupe` option is enabled.
+如果您计划将 [Tilequery API](https://docs.mapbox.com/api/maps/#tilequery) 与自定义瓦片一起使用，则防止功能重复非常重要。在 Tilelet 中使用 Tilequery API 时，即使在`dedupe`选项中，tileset 中的功能重复也会导致意外的重复结果。
 
-To prevent feature duplication when creating a new tileset, use the [Tilesets API](https://docs.mapbox.com/api/maps/#tilesets) or [Tippecanoe](https://docs.mapbox.com/help/troubleshooting/large-data-tippecanoe/) to properly create globally unique IDs. Avoid using the Uploads API or the Mapbox Studio UI, which will not use any user-provided IDs or generate globally unique IDs.
+要在创建新的图瓦片集时防止功能重复，请使用 [Tilesets API](https://docs.mapbox.com/api/maps/#tilesets) 或 [Tippecanoe](https://docs.mapbox.com/help/troubleshooting/large-data-tippecanoe/) 来正确创建全局唯一ID。避免使用 Uploads API 或 Mapbox Studio UI，因为它们不会使用任何用户提供的 ID 或生成全局唯一的 ID。
 
-### Reproject to Web Mercator
+### 重投影到 Web Mercator
 
-During upload processing, we reproject all geometries to [Web Mercator](https://en.wikipedia.org/wiki/Web_Mercator) (EPSG:3857) before encoding into vector tiles. During the vector tile encoding process, if your data isn't Web Mercator, each vertex must be reprojected during encoding, which can take a long time.
+在上传处理期间，我们将所有几何图形重新投影到 [Web Mercator](https://en.wikipedia.org/wiki/Web_Mercator) (EPSG:3857) ，然后再编码为矢量瓦片。在矢量切片编码过程中，如果您的数据不是 Web Mercator，则在编码过程中必须重新投影每个顶点，这可能需要很长时间。
 
-We suggest reprojecting your data before uploading to skip this process and speed up your upload. Here's how you can reproject your data with open source tools:
+我们建议您在上传之前重新投影数据，以跳过此过程并加快上传速度。使用开源工具重新投影数据的方法如下：
 
-* GDAL's `ogr2ogr` command line utility. The following example is how to convert a Shapefile to Web Mercator.
+* GDAL's `ogr2ogr` command line utility. 下面的示例是如何将 Shapefile 转换为 Web Mercator。
 
         ogr2ogr output.shp -t_srs "EPSG:3857" input.shp
 
 * QGIS allows for reprojection - `Right-click your layer -> Save As -> Select "Web Mercator EPSG:3857" as the output projection`.
 
-### Multipart to singlepart
+### 多视到单视
 
-Multipart geometries can be complex – a single [feature](/help/glossary/features/) can be comprised of hundreds of thousands of polygons. These complex multipart geometries increase processing time and lead to timeouts.
+多视几何形状可能很复杂：一个[feature](/help/glossary/features/) 可以由成千上万个多边形组成。这些复杂的多部分几何形状会增加处理时间并导致超时。
 
-To improve processing speeds, you can break each polygon into its own unique feature (singlepart) using QGIS. This will reduce the complexity per feature and allow the data to process faster. Note that each individual singlepart feature will share the attributes of the original feature.
+为了提高处理速度，您可以使用 QGIS 将每个多边形分解成自己独特的特征（单个部分）。这将降低每个功能的复杂性，并使数据处理更快。请注意，每个单独的零件特征都将共享原始特征的属性。
 
 ![multipart to singlepart](https://c1.staticflickr.com/9/8857/28348187970_af83f9a5e4_b.jpg)
 
 *Note that `population: 100` is duplicated. If you plan on styling based on attributes such as this, be wary of splitting into singleparts!*
 
-There are a couple of helpful tools for doing this:
+有一些比较好用的工具供参考：
 
-* In QGIS you can use either the `Vector -> Geometry Tools -> Multipart to singleparts` or the [Multipart Split plugin](http://plugins.qgis.org/plugins/splitmultipart/).
-* If you are using GeoJSON and Node.js, you can use the [geojson-flatten](https://github.com/node-geojson/geojson-flatten) module.
+* 在 QGIS 中使用`Vector -> Geometry Tools -> Multipart to singleparts` 或者 [Multipart Split plugin](http://plugins.qgis.org/plugins/splitmultipart/).
+* 如果您使用的是 GeoJSON 和 Node.js，则可以使用 [geojson-flatten](https://github.com/node-geojson/geojson-flatten) 模块。
 
-### Simplification
+### 简化
 
 Simplifying your data means removing complexity in the vertices of your geometry. Each vertex must be translated to vector tile coordinates. The fewer vertices to translate, the faster processing becomes. Often you can simplify your data without any visual change. It's important to watch out for *oversimplification*, though! Oversimplifying could remove important granularity in your data as well as potentially create invalid geometries if lines begin overlapping.
 
