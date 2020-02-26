@@ -1,7 +1,7 @@
 ---
-title: Add a hillshade layer
-description: Add a raster-dem source as a hillshade layer for detailed slope and shading.
-topic: Map design
+title: 添加山体阴影层
+description: 添加栅格数据源作为山坡阴影图层，以获取详细的坡度和阴影。
+topic: 地图设计
 image: thumbnail-hillshade
 prependJs:
   - "import StudioExample from '../../components/studio-example';"
@@ -30,18 +30,18 @@ language:
       propertyName: "hillshade-shadow-color"
     }}
     specs={[
-      <p>This is a modified version of the <strong>Basic template</strong> style.</p>,
-      <p>A new <code>hillshade</code> layer named <code>mapbox-terrain-rgb</code> has been added.</p>,
+      <p>这是<strong>基本模板</strong>样式的修改版本。</p>,
+      <p>添加了一个名为<code>mapbox-terrain-rgb</code>的新<code>山体阴影</code>层。</p>,
     ]}
   />
 </GLWrapper>
 }}
 
-## About this style
+## 关于这种风格
+- **山坡阴影层数据**：山坡阴影层数据来自`mapbox-terrain-rgb`图块集。 Mapbox Terrain-RGB是一个栅格数据源，其中包含以栅格PNG瓦片编码的全局高程数据作为颜色值。 由于它使用栅格数据源来计算用户计算机上像素的斜率和阴影，因此产生的山体阴影比矢量地形图块可能的阴影要细得多。 设置单个像素的样式与更宽，更不详细的多边形之间的区别。 详细了解更多关于[Mapbox Terrain-RGB tileset]（https://www.mapbox.com/help/access-elevation-data/）。
 
-- **Hillshade layer data**: The data for the hillshade layer comes from the `mapbox-terrain-rgb` tileset. Mapbox Terrain-RGB is a raster-dem source that contains global elevation data encoded in raster PNG tiles as color values. Because it uses a raster-dem source to calculate the slope and shadow pixel-by-pixel on the user’s computer, the resulting hillshading is much more detailed than the shading that’s possible with a vector-terrain tileset. It’s the difference between styling individual pixels vs. broader, less detailed polygons. Read more about the [Mapbox Terrain-RGB tileset](https://www.mapbox.com/help/access-elevation-data/).
-- **Raster tile styling**: With `hillshade` layers, you can customize the color, illumination direction, and intensity of the hillshading effect. Open this style in the style editor to experiment with hillshade style properties. Read more about the [hillshade layer type in the Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-js/style-spec#layers-hillshade).
+- **栅格样式**：通过`hillshade`图层，您可以自定义颜色，光照方向和山体阴影效果的强度。 在样式编辑器中打开此样式以尝试使用山坡阴影样式属性。 详细了解[Mapbox样式规范中的山坡阴影图层类型]（https://www.mapbox.com/mapbox-gl-js/style-spec#layers-hillshade）。
 
-## Related resources
+## 相关资源
 
-**Looking for more guidance?** Read our [tutorials](https://www.mapbox.com/help/tutorials/#map-design).
+**寻求更多指导?** 参考我们的[指导案例](https://www.mapbox.com/help/tutorials/#map-design)。
