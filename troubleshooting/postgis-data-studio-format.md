@@ -1,97 +1,96 @@
 ---
-title: Get your PostGIS data ready for Mapbox Studio
-description: Methods to re-format, query, and export PostGIS data into a Mapbox Studio ready format.
+title: 为 Mapbox Studio 准备好 PostGIS 数据
+description: 重新格式化，查询 PostGIS 数据并将其导出为 Mapbox Studio 所支持的格式的方法。
 topics:
 - uploads
 contentType: troubleshooting
 ---
 
 
-This guide will outline two methods for preparing data from your PostGIS database to upload to Mapbox Studio:
+本指南将概述两种从 PostGI 数据库准备数据以上传到 Mapbox Studio 的方法：
 
-1. **Export your data with QGIS** &mdash; connect QGIS to your PostGIS database and save selected tables as Shapefiles.
-2. **Query and export your data with `ogr2ogr`** &mdash; query your database and create GeoJSON files.
+1. **使用QGIS导出数据**＆mdash;将 QGIS 连接到您的 PostGIS 数据库，并将选定的表另存为 Shapefile。
+2. **使用 `ogr2ogr` 查询和导出数据**＆mdash;查询您的数据库并创建 GeoJSON 文件。
 
-This guide will use [QGIS](https://www.qgis.org/en/site/forusers/download.html), a free, open source GIS. Download and install QGIS before getting started.
+本指南将使用免费的开源 GIS [QGIS](https://www.qgis.org/en/site/forusers/download.html)。在开始之前，下载并安装 QGIS。
 
-## Export PostGIS data with QGIS
+## 使用 QGIS 导出 PostGIS 数据
 
-If you prefer interacting with your PostGIS database via a graphical user interface, we recommend using QGIS to connect to your database to export your data. If you're comfortable writing your own queries, skip to the next section.
+如果您希望通过图形用户界面与 PostGIS 数据库进行交互，我们建议使用 QGIS 连接到数据库以导出数据。如果您愿意编写自己的查询，请跳至下一部分。
 
-### Connect to PostGIS
+### 连接到 PostGIS
 
-Launch QGIS and select **Layer** > **Add PostGIS Layers** from the toolbar.
+启动 QGIS 并从工具栏选择 **Layer** > **Add PostGIS Layers** 。
 
 <img alt='screenshot of QGIS on how to add PostGIS Layers' src='/help/img/3rdparty/qgis-connect-postgis-qgis.png'>
 
-After the **Add PostGIS Table(s)** dialog pops up, click the **New** button to set up your database connection.
+在 **Add PostGIS Table(s)** 对话框弹出后, 点击 **New** 按钮来设置您的数据库链接。
 
 <img alt='screenshot of QGIS showing Add PostGIS Table dialogue' src='/help/img/3rdparty/qgis-click-new.png'>
 
-Now enter:
+下面请输入：
 
-- A name for this connection.
-- The host name. The default is `localhost`.
-- Port. The default is `5432`.
-- Your PostGIS database name.
-- The username for the database.
+- 此连接的名称。
+- 主机名。默认值为`localhost`。
+- 端口。默认值为`5432`。
+- 您的 PostGIS 数据库名称。
+- 数据库的用户名。
 
-Click the **Test Connection** button to make sure you are synced up, then click **OK**.
+点击 **Test Connection** 按钮确保您已同步，然后点击 **OK**。
 
 <img alt='screenshot of QGIS showing how to create a New PostGIS connection' src='/help/img/3rdparty/qgis-new-connection.png'>
 
-Back in the **Add PostGIS Table(s)** dialog box, click the **Connect** button to connect to your local database.
+回到 **Add PostGIS Table(s)** 对话框, 点击 **Connect** 按钮连接到您的本地数据库。
 
 <img alt='screenshot of QGIS showing Connect button' src='/help/img/3rdparty/qgis-connect.png'>
 
 ### Select tables
 
-You should see a label appear in the **Schema** column. The label in the screenshot below is **public**. Click the arrow next to the label to expand the nested table values. Next, click to select the tables you want to show in your project.
+您应该看到一个标签出现在 **Schema** 列中。以下屏幕截图中的标签为 **public**。单击标签旁边的箭头以展开嵌套表的值。接下来，单击以选择要在项目中显示的表。完成后，单击对话框左下方的“添加”按钮。
 
-When you're finished, click the **Add** button on the bottom left of the dialog box.
+当完成之后，点击对话框底部左边的 **Add** 按钮。
 
 <img alt='animated GIF of the process for selecting tables in the Add PostGIS Tables dialogue' src='/help/img/3rdparty/qgis-click-schema.gif'>
 
-### View data
+### 查看数据
 
-You should now be able to see your data visualized in QGIS.
+现在您应该可以看到数据显示在 QGIS 中了。
 
 <img alt='screenshot of QGIS showing data visualized' src='/help/img/3rdparty/qgis-see-data.png'>
 
-### Save as Shapefile
+### 另存为 Shapefile
 
-Next, export your data as a Shapefile so you can upload it to Mapbox Studio later. Make sure your **Layers** panel is visible in QGIS by checking **Layers** under the **View** > **Panels** tab.
+接下来，将数据导出为 Shapefile，以便以后将其上传到 Mapbox Studio。通过选中 **View** > **Panels** 选项卡下的 **Layers**，确保您的 **Layers** 面板在 QGIS 中可见。
 
 <img alt='screenshot of QGIS showing how to make layers panel visible' src='/help/img/3rdparty/qgis-view-layers.png'>
 
-From the **Layers** panel, right-click on your data layer, then click **Save As..**.
+在 **Layers** 面板中，右键单击数据层，然后单击**Save As..**。
 
 <img alt='screenshot of QGIS showing how to save as' src='/help/img/3rdparty/qgis-save-as.png'>
 
-This will open the **Save vector layer as...** panel. Make sure that you set the **Format** to **ESRI Shapefile**. Next, click the **Browse** button to navigate to the folder where you wish to save your file locally. Once you've navigated to your desired destination directory, create a new empty folder to house your shapefiles and give it a name. Select your new folder, then click **OK**.
+这将打开 **Save vector layer as...** 面板。确保将 **Format**  设置为 **ESRI Shapefile**。接下来，单击 **Browse** 按钮以浏览到您希望在本地保存文件的文件夹。导航到所需的目标目录后，创建一个新的空文件夹来存放 shapefile 并为其命名。选择新文件夹，然后单击 **OK**。
 
 <img alt='screenshot of QGIS showing Save vector layer as dialogue' src='/help/img/3rdparty/qgis-save.png'>
 
-In QGIS, a light blue bar will quickly flash to show that your save is completed. You can now navigate to that folder on your local machine to retrieve your data.
+在 QGIS 中，淡蓝色的条将快速闪烁以显示您的保存已完成。现在，您可以导航到本地计算机上的该文件夹以检索数据。
 
 <img alt='screenshot of QGIS successful save message' src='/help/img/3rdparty/qgis-saving.png'>
 
-### Zip the Shapefiles
+### 压缩 Shapefiles
 
-Navigate to the folder with your saved Shapefiles. Right-click on the folder containing all the files that are part of your Shapefile and **Compress** or **zip** this _entire folder_.
+导航到包含已保存的 Shapefile 的文件夹。右键单击包含所有文件的文件夹，这些文件是 Shapefile 的一部分，并且 **Compress** o或 **zip** 在这个 _entire folder_。
 
-To upload Shapefiles to Mapbox Studio they must be zipped and cannot be larger than 270 MB.
+要将 Shapefile 上传到 Mapbox Studio，必须将其压缩，并且不能大于 270 MB。
 
 <img alt='screenshot of finder showing how to zip a folder' src='/help/img/screenshots/save-shp.png'>
 
+## 使用 ogr2ogr 查询和导出 PostGIS 数据
 
-## Query and export PostGIS data with ogr2ogr
+如果更喜欢使用命令行而不是 QGIS，则可以使用 GDAL的 [`ogr2ogr`](http://www.gdal.org/ogr2ogr.html) 实用程序来转换数据格式。使用`ogr2ogr`和一些 SQL，您也可以查询数据库。
 
-If prefer using the command line instead of QGIS, you can use GDAL's [`ogr2ogr`](http://www.gdal.org/ogr2ogr.html) utility to convert your data format. Using `ogr2ogr` and some SQL, you can also query your database.
+### 选择表格
 
-### Choose tables
-
-Decide what data you wish to display on your map. In this example, the PostGIS database is loaded with [Natural Earth](http://www.naturalearthdata.com/downloads/) data. Use the command `psql -d natural_earth` followed by `\dt` to enter your database and view the tables it contains:
+确定要在地图上显示的数据。在此示例中，PostGIS 数据库加载了 [Natural Earth](http://www.naturalearthdata.com/downloads/) 数据。使用命令`psql -d natural_earth`，然后使用 `\dt` 输入数据库并查看其包含的表：
 
 ```
 psql -d natural_earth \
@@ -101,9 +100,9 @@ psql -d natural_earth \
 <img alt='screenshot of tables' src='/help/img/3rdparty/postgis-view-data-tables.png'>
 
 
-### Choose columns
+### 选择列
 
-The example code below queries all the columns in tables named `ne_10m_minor_islands` table.
+下面的示例代码查询名为 `ne_10m_minor_islands` 的表中的所有列。
 
 ```
 
@@ -114,9 +113,9 @@ The example code below queries all the columns in tables named `ne_10m_minor_isl
 <img alt='screenshot of querying columns' src='/help/img/3rdparty/postgis-table-data.jpg'>
 
 
-### Reformat and query
+### 重新格式化和查询
 
-With one command you can convert your data into `GeoJSON` format, re-project from `EPSG:3857` to `EPSG:4326`, save the new `GeoJSON` file as `minor_islands.json`, and query specific tables with SQL.
+使用一个命令，您可以将数据转换为`GeoJSON`格式，从`EPSG：3857`重新投影到`EPSG：4326`，将新的`GeoJSON`文件保存为`minor_islands.json`，并使用 SQL 查询特定的表。
 
 ```
 ogr2ogr -f GeoJSON \
@@ -127,19 +126,19 @@ ogr2ogr -f GeoJSON \
 ```
 
 
-### GeoJSON format
+### GeoJSON 格式
 
-You now have your tables in GeoJSON format and they're ready to upload to Mapbox Studio!
+现在，您可以使用 GeoJSON 格式的表格，并且可以将其上传到 Mapbox Studio 了！Y
 
 <img alt='screenshot of finder with location of resulting file' src='/help/img/screenshots/json-format.png'>
 
 
-## Next steps
+## 下一步
 
-### Upload your data
+### 上传您的数据
 
-You are now ready to upload your data! Read our article on [Uploading data to your Mapbox account](/help/troubleshooting/uploads/) for more information.
+现在就可以上传数据了！可以通过 [Uploading data to your Mapbox account](/help/troubleshooting/uploads/) 了解更多信息。
 
-### Working with large data files
+### 处理大数据文件
 
-If you've exported global data files or data that may exceed the 270 MB limit for uploading into Mapbox Studio, read our articles on [Preparing large data files for Mapbox Studio](/help/troubleshooting/large-data-tippecanoe/).
+如果您已导出全局数据文件或可能超出 270 MB 限制的数据以上传到 Mapbox Studio，请阅读 [Preparing large data files for Mapbox Studio](/help/troubleshooting/large-data-tippecanoe/)。
