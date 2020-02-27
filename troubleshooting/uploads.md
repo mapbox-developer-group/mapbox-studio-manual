@@ -157,49 +157,49 @@ _Note: 尽管此处的一些故障排除建议也可能适用于 **datasets**，
 
 ### 简化
 
-Simplifying your data means removing complexity in the vertices of your geometry. Each vertex must be translated to vector tile coordinates. The fewer vertices to translate, the faster processing becomes. Often you can simplify your data without any visual change. It's important to watch out for *oversimplification*, though! Oversimplifying could remove important granularity in your data as well as potentially create invalid geometries if lines begin overlapping.
+简化数据意味着消除几何顶点的复杂性。每个顶点必须转换为矢量瓦片坐标。转换的顶点越少，处理速度就越快。通常，您无需任何视觉更改即可简化数据。不过，请注意“过度简化”，这一点很重要！如果线开始重叠，过度简化可能会删除数据中的重要粒度，并可能创建无效的几何。
 
 ![simplification image](https://c1.staticflickr.com/9/8216/28486171002_f282ce64c4_b.jpg)
 
-Simplification tools typically take a **tolerance** parameter to specify how much to simplify. Some tools to use for simplifying data:
+简化工具通常采用 **tolerance** 参数来指定要简化的程度。下面是一些用于简化数据的工具：
 
 * [Tippecanoe](https://github.com/mapbox/tippecanoe)
 * QGIS vector simplification - `Vector -> Geometry Tools -> Simplify geometries`
 * [Mapshaper.org](http://mapshaper.org/)
 * Turf.js [simplify](http://turfjs.org/docs#simplify)
 
-### Limit large features
+### 限制大型功能
 
-Large features that span the entire dataset can slow down processing.
+跨越整个数据集的大型功能可能会减慢处理速度。
 
 ![illustration of a possible dataset](/help/img/misc/uploads-illustration.jpg)
 
 <!-- copyeditor ignore represents -->
-For example, consider this dataset of Hawaii. It contains a handful of smaller polygons that represent the islands. It also contains a large polygon that represents the surrounding water. Since the [_bounding box_](/help/glossary/bounding-box/) of the water polygon will intersect with nearly all the tile boundaries (gray lines), the water polygon will need to be processed for nearly every tile within this tileset.
+例如，考虑夏威夷的数据集。它包含一些较小的代表岛屿的多边形。它还包含一个代表周围水域的大多边形。由于水多边形的 [_bounding box_](/help/glossary/bounding-box/) 将与几乎所有图块边界（灰色线）相交，因此几乎需要为该图块集中的每个瓦片处理水域的多边形。
 
-**There is no exact solution for this, since it largely depends on the dataset and how you plan to style and use the data.**
+**对此没有确切的解决方案，因为它在很大程度上取决于数据集以及如何计划样式和使用数据。**
 
-Some possible solutions include:
+有一些可能的解决方案：
 
-* Remove the large polygon if it's not necessary for your use case.
+* 删除一些不太重要的大多边形。
 
-* Split the large polygon into smaller polygons: After creating a digitized layer of smaller polygons, use that digitized layer to intersect with the large polygon and split it into pieces. Then add the newly split feature into your original dataset.
+* 将较大的多边形拆分为较小的多边形：创建较小的多边形的数字化层后，使用该数字化层与较大的多边形相交并将其拆分为多个部分。然后将新拆分的特征添加到原始数据集中。
 
   QGIS geometry intersection - `Vector -> Geoprocessing Tools -> Intersection`
 
-  *Caution*: This could create unwanted polygon borders, depending on how you plan to style the dataset.
+  *Caution*: 这可能会创建不必要的多边形边界，具体取决于您计划如何设置数据集样式。
 
-### Slice large contour datasets
+### 对大轮廓数据集进行切片
 
-Large contour datasets can be particularly complex. Often they will have long, single feature linestrings wrapping across the entire dataset. Like the large polygons above, these can take a long time to process.
+大型轮廓数据集可能特别复杂。通常，它们会在整个数据集中包含长而单一的特征线串。像上面的大多边形一样，这些多边形可能需要很长时间才能处理。
 
-We recommend using [GRASS's `v.split` function](https://grass.osgeo.org/grass64/manuals/v.split.html) via QGIS to break lines into shorter, equal segments. Smaller geometries will improve processing speed. If the contour data is highly detailed (as in, requires zoom 22) we recommend breaking lines every 5 kilometers.
+我们建议通过 QGIS 使用 [GRASS's `v.split` function](https://grass.osgeo.org/grass64/manuals/v.split.html) 将线分成更短的，相等的段。较小的几何形状将提高处理速度。如果轮廓数据非常详细（例如，需要缩放 22），我们建议每 5 公里断开一条线。
 
-### Generate tilestats for MBTiles
+### 生成 MBTiles 的 tilestats 
 
-We generate summary documents, known as tilestats, for uploads so Mapbox Studio can see what types of data and properties are in your spatial data. This takes quite a long time for large MBTiles files and can lead to timeouts. If you are using Tippecanoe to generate your MBTiles file you can bypass this step by using version 1.21.0 or later of Tippecanoe, which pre-generates a tilestats object. This can cut upload times in half.
+我们生成用于上载的摘要文档，称为 tilestats，以便 Mapbox Studio 可以查看空间数据中的数据类型和属性。对于大型 MBTiles 文件，这需要花费很长时间，并且可能导致超时。如果您使用 Tippecanoe 生成 MBTiles 文件，则可以使用 Tippecanoe 的 1.21.0 或更高版本来跳过此步骤，该版本会预先生成 tilestats 对象。这样可以将上传时间减少一半。
 
-If you aren't using Tippecanoe, you can still use the `tile-join` operation provided by Tippecanoe to generate the tilestats document. Make sure to at least use version 1.22.0.
+如果您不使用 Tippecanoe，则仍可以使用 Tippecanoe 提供的 `tile-join` 操作来生成 tilestats 文档。确保至少使用 1.22.0 版。
 
 ```
 tile-join -o with-tilestats.mbtiles original.mbtiles
