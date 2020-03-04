@@ -1,7 +1,7 @@
 ---
-title: Create a choropleth map
-description: Add a fill layer and use expressions to style a choropleth map.
-topic: Data visualization
+title: 创建一个分级统计图
+description: 添加一个填充层，并使用表达式设置一个分级统计图的样式。
+topic: 数据可视化
 image: thumbnail-choropleth
 prependJs:
   - "import StudioExample from '../../components/studio-example';"
@@ -30,20 +30,21 @@ language:
       propertyName: "fill-color"
     }}
     specs={[
-      <p>This is a modified version of the <strong>Basic template</strong> style.</p>,
-      <p>A new <code>fill</code> layer called <code>state-data</code> has been added.</p>,
-      <p>The source data for the <code>state-data</code> layer comes from a custom tileset that has been uploaded to Mapbox Studio.</p>,
-      <p>States are styled using property expressions to <strong>style features across a data range</strong>.</p>
+      <p>这是<strong>基本模板</strong> 样式的修改版本。</p>,
+      <p>添加了一个名为<code>state-data</code> 数据的新<code>填充</code>层。</p>,
+      <p><code>state-data</code>数据层的原数据来自于自定义图块集，该图集已上载到Mapbox Studio。</p>,
+      <p>各个州的样式使用状态表达式对<strong>整个数据范围内对要素进行样式设置</strong>。</p>
     ]}
   />
 </GLWrapper>
 }}
 
-## About this style
+## 关于这种风格
 
-- **Tileset from custom data**: The data that is used as the `source` for the `state-data` layer comes from a custom tileset that was created by uploading a GeoJSON file to Mapbox Studio. This data is borrowed from [the Leaflet choropleth tutorial](http://leafletjs.com/examples/choropleth/) and contains data on population density across US states. The tileset itself contains the geometry for each state and two properties: `name` (a string) and `density` (a number). Read more about [uploading data to Mapbox Studio in the Overview section](/studio-manual/overview/geospatial-data/).
-- **Styling with expressions**: The `state-data` layer is styled using property expressions. In this case, property expressions are being used on the _Color_ property to style features across a data range. The color of each feature will be determined based on its `density`.
+- **自定义数据的瓦片集**：用作`state-data`层的`源`的数据来自自定义图块集，该图块集是通过将GeoJSON文件上传到Mapbox Studio创建的。 该数据是从
+[Leaflet 分级统计图教程](http://leafletjs.com/examples/choropleth/) 借鉴来的，其中包含有关美国各州人口密度的数据。 瓦片集本身包含每个状态的几何形状和两个属性：`名称`（字符串）和`密度`（数字）。 阅读有关[概述部分中的将数据上传到Mapbox Studio的更多信息](/studio-manual/overview/geospatial-data/)。
+- **带有表达式的样式**：`state-data`数据层使用属性表达式设置样式。 在这种情况下，将在_Color_属性上使用属性表达式来为整个数据范围内的要素设置样式。 每个特征的颜色将根据其`密度`来确定。
 
-## Related resources
+## 相关资源
 
-**Looking for more guidance?** Read our [Make a choropleth map, part 1: create a style](https://www.mapbox.com/help/choropleth-studio-gl-pt-1/) tutorial.
+**还在寻找更多指南？**请阅读我们的[制作一个分级统计图，第1部分：创建样式](https://www.mapbox.com/help/choropleth-studio-gl-pt-1/)教程。
