@@ -24,7 +24,7 @@ contentType: troubleshooting
 
 ## 可用语言
 
-所有Mapbox模板地图均使用[Mapbox Streets矢量图块集](https://docs.mapbox.com/vector-tiles/)作为地图[要素](https://docs.mapbox.com/vector-tiles/)。在此图块集中，每个标签层都有不同的名称字段。有关支持的语言的完整列表，请参见[Mapbox Streets v 8 tileet 文档](https://docs.mapbox.com/vector-tiles/reference/mapbox-streets-v8/#name-text--name_lang-code-text)。
+所有Mapbox模板地图均使用[Mapbox Streets矢量图块集](https://docs.mapbox.com/vector-tiles/)作为地图[要素](https://docs.mapbox.com/vector-tiles/)。在此图块集中，每个标签层都有不同的名称字段。有关支持的语言的完整列表，请参见[Mapbox Streets v 8 tileset 文档](https://docs.mapbox.com/vector-tiles/reference/mapbox-streets-v8/#name-text--name_lang-code-text)。
 
 {{<Note title='导航SDK中的语言支持' >}}
 
@@ -80,9 +80,9 @@ contentType: troubleshooting
 
 ### Mapbox GL JS
 
-如果您对JavaScript感到满意，则可以使用[Mapbox GL JS中](https://docs.mapbox.com/mapbox-gl-js/)的[`.setLayoutProperty()`](https://docs.mapbox.com/mapbox-gl-js/api/#map#setlayoutproperty)方法来动态更改标签的语言。有关更多详细信息，请参见[语言切换器](https://docs.mapbox.com/mapbox-gl-js/example/language-switch/) Mapbox GL JS示例。
+如果您对JavaScript语言熟悉，则可以使用[Mapbox GL JS中](https://docs.mapbox.com/mapbox-gl-js/)的[`.setLayoutProperty()`](https://docs.mapbox.com/mapbox-gl-js/api/#map#setlayoutproperty)方法来动态更改标签的语言。有关更多详细信息，请参见[语言切换器](https://docs.mapbox.com/mapbox-gl-js/example/language-switch/) Mapbox GL JS示例。
 
-您还可以使用**Mapbox GL语言**插件自动更改地图样式的图层，以使用`text-field`与浏览器语言匹配的。在[GitHub上](https://github.com/mapbox/mapbox-gl-language/#mapbox-gl-language--)了解有关Mapbox GL语言插件的其他功能的更多信息。
+您还可以使用**Mapbox GL语言**插件自动更改地图样式的图层，以使用`text-field`与浏览器的语言相匹配。在[GitHub上](https://github.com/mapbox/mapbox-gl-language/#mapbox-gl-language--)了解有关Mapbox GL语言插件的其他功能的更多信息。
 
 ### 适用于Android的Mapbox Maps SDK
 
