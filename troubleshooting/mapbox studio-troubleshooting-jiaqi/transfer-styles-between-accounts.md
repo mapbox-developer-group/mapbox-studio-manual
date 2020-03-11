@@ -49,11 +49,11 @@ Learn how to generate a share link to allow other users to copy your style.
 
 在帐户之间转移私人样式可让您拥有样式并通过单个Mapbox帐户对其进行更改，而无需将样式公开。
 
-如果您有权访问要从中进行转移的帐户或获得了必要的文件，则可以在帐户之间转移Mapbox资产。如何将样式从一个帐户转移到另一个帐户取决于您使用的是Mapbox Studio还是Mapbox Studio Classic，以及样式中包含的数据。
+如果您有权访问要从中进行转移的帐户或者已经得到所需的文件，则可以在帐户之间转移Mapbox资产。如何将样式从一个帐户转移到另一个帐户取决于您使用的是Mapbox Studio还是Mapbox Studio Classic，以及样式中包含的数据。
 
 ### 使用 Mapbox Studio 制作的样式
 
-使用Mapbox Studio制作的样式可以以JSON格式下载并作为新样式重新上传。要下载样式，请在Mapbox Studio样式编辑器中打开样式，单击**Share**（共享）按钮，然后单击 **Download** （下载）选项旁边的链接。您可以下载样式的草稿或正式版本。
+使用Mapbox Studio制作的样式可以选取JSON格式下载并作为新样式重新上传。要下载样式，请在Mapbox Studio样式编辑器中打开样式，单击**Share**（共享）按钮，然后单击 **Download** （下载）选项旁边的链接。您可以下载样式的草稿或正式版本。
 
 {{
   <AppropriateImage
