@@ -1,47 +1,51 @@
 ---
-title: CSV file errors
-description: Learn how to fix errors when uploading CSV files.
+title: CSV文件错误类型 CSV file errors
+description: 学习如何在上传CSV文件时修复出现的错误 Learn how to fix errors when uploading CSV files.
 topics:
 - data
 - uploads
 contentType: troubleshooting
 ---
 
-You can upload a CSV file to Mapbox Studio from the [tilesets](https://www.mapbox.com/studio/tilesets/) page, the [Mapbox Studio dataset editor](https://www.mapbox.com/studio/datasets/) page, or by using the Mapbox [Uploads API](https://docs.mapbox.com/api/maps/#uploads).
+您可以从[地图切片集](https://www.mapbox.com/studio/tilesets/) 页面， [Mapbox Studio 数据集编辑器](https://www.mapbox.com/studio/datasets/) 页面， 或使用Mapbox [Uploads API]将CSV文件上传到Mapbox Studio(https://docs.mapbox.com/api/maps/#uploads)。
 
-## Tilesets vs. datasets
+## 地图切片集 对比 数据集
 
-If you upload your CSV via the Mapbox Studio [tilesets](https://www.mapbox.com/studio/tilesets/) page or via the [Uploads API](https://docs.mapbox.com/api/maps/#uploads), the geometries and data attributes of the resulting features will not be editable. Use the [Mapbox Studio dataset editor](https://www.mapbox.com/studio/datasets/) if you'd like to edit your data before you add it to your map. For more information on the difference between datasets and tilesets, see the [Mapbox Studio Manual](https://www.mapbox.com/studio-manual/overview/geospatial-data/).
+如果您是通过Mapbox Studio磁贴集页面或Uploads API上传CSV格式的，则生成的要素的几何形状和数据属性将不可编辑。如果要在添加数据之前对其进行编辑，请使用Mapbox Studio数据集编辑器。 有关您的地图的更多信息，请参见Mapbox Studio手册。
 
-## File format
+如果您是通过Mapbox Studio[地图切片集](https://www.mapbox.com/studio/tilesets/) 页面或通过[Uploads API](https://docs.mapbox.com/api/maps/#uploads)上传CSV格式文件, 则生成的要素的几何形状和数据属性将不可编辑。如果要对添加的数据之前对其进行编辑，请使用[Mapbox Studio数据集编辑器](https://www.mapbox.com/studio/datasets/)。 有关您的地图的更多信息，请参见[Mapbox Studio手册](https://www.mapbox.com/studio-manual/overview/geospatial-data/)。
 
-When uploading [CSV](/help/glossary/csv) files, keep the following in mind:
+## 文件格式
 
-- CSV files can be no larger than **5 MB** for datasets, and **1 GB** for tilesets.
-- CSV files must be in [UTF-8](https://en.wikipedia.org/wiki/UTF-8) encoding.
-- CSV files must contain coordinates (latitude and longitude) and can only represent point features, not lines or polygons.
-- CSV files must be comma (`,`) separated.
-- Data imported via CSV will be encoded as a string type in the Mapbox Studio dataset editor. If you want to code any of your imported data as numbers, you can edit the fields individually in the dataset editor or upload your data in [GeoJSON format](/help/glossary/geojson).
-- If a row of data is invalid, that row will not be included in the resulting tileset.
+上传[CSV](/help/glossary/csv)文件时, 请注意以下几点：
 
-The first line of your CSV file must contain column headers, and column headers must include *latitude* and *longitude* fields at a minimum. The following are acceptable column headers for columns that contain latitude and longitude values. Note that `x` and `y` are valid column headers when you are uploading data as a tileset, but they are _not_ valid column headers when you are uploading data as a dataset.
+- 数据集CSV文件的大小不能超过**5 MB**, 地图切片集不能超过**1 GB** 。
+- CSV文件必须采用 [UTF-8](https://en.wikipedia.org/wiki/UTF-8)编码。
+- CSV文件必须包含坐标（纬度和经度）并且只能表示点要素，而不能表示线或面。
+- CSV文件必须以逗号(`，`)分隔。
+- 通过CSV导入的数据将在Mapbox Studio数据集编辑器中编码为字符串类型。 如果要将任何导入的数据编码为数字，则可以在数据集编辑器中单独编辑字段或以 [GeoJSON 格式](/help/glossary/geojson)上传数据。
+- 如果一行数据无效，则该行将不包含在结果图块集中。
 
-- Latitude:
+CSV文件的第一行必须包含列标题，并且列标题必须至少包含纬度和经度字段。以下是包含纬度和经度值的列的可接受列标题。请注意，当x和y为有效列标题时， 您将数据作为图块集上传，但是当您将数据作为数据集上传时，它们不是有效的列标题。
+
+CSV文件的第一行必须包含列标题，并且列标题必须至少包含 *纬度* and *经度* 字段。以下是包含纬度和经度值的列的可接受列标题。请注意，当`x` 和 `y` 为有效列标题时，您将数据作为地图切片集上传，但是当您将数据作为数据集上传时，它们_不是_有效的列标题。 
+
+- 纬度：
   - `latitude`
   - `lat`
   -  `y`
-- Longitude:
+- 经度：
   - `longitude`
   - `lon`
   - `long`
   - `lng`
   - `x`
 
-If your coordinates are GeoJSON or WKT encoded, you can name that field `geojson` or `wkt` respectively. See the [Mapnik documentation on CSVs](https://github.com/mapnik/mapnik/wiki/CSV-Plugin) for more information. If a column has an empty header, a column label will be generated automatically.
+如果您的列是GeoJSON或WKT编码的，则可以分别命名该字段`geojson` 或 `wkt`。 有关详细信息，请参见 [Mapnik上的CSV文件](https://github.com/mapnik/mapnik/wiki/CSV-Plugin)。 如果列的标题为空，则会自动生成列标签。
 
-### Example
+### 举例
 
-Here's an example of how to format a CSV file to upload in Mapbox Studio:
+这是有关如何格式化CSV文件以在Mapbox Studio中上传的示例：
 
 ```
 title,latitude,longitude
