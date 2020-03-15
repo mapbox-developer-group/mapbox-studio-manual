@@ -1,13 +1,13 @@
 ---
-title: Style editor overview
-description: The Mapbox Studio style editor is a tool for creating map styles.
+标题: 样式编辑器概述
+描述: 样式编辑器是创建地图样式的工具。
 prependJs:
 - "import StyleEditorDiagram from '../../../../components/illustrations/style-editor-diagram';"
 - "import YouAreHere from '../../../../components/illustrations/you-are-here';"
-contentType: reference
+内容类型: 参考
 ---
 
-The **Mapbox Studio style editor** is a tool for creating map styles. A **[style](https://docs.mapbox.com/help/glossary/style)** is a set of rules for how your map will be rendered on a page. It includes references to your data, map images (icons, markers, patterns), fonts, and, most importantly, it defines how all your data should be styled on your map.
+**Mapbox Studio 样式编辑器**是用于创建地图样式的工具。 **[样式](https://docs.mapbox.com/help/glossary/style)** 是如何将你的地图展示在页面中的一套规则。 它包含对数据，地图影像（图标，标记，模式），字体的参考，最重要的是，它定义了你应如何在地图上设置所有数据的样式。
 
 {{
   <YouAreHere
@@ -15,13 +15,13 @@ The **Mapbox Studio style editor** is a tool for creating map styles. A **[style
   />
 }}
 
-## What is a style?
+## 样式是什么？
 
-A **style** is a JSON document that conforms to the [Mapbox Style Specification](https://docs.mapbox.com/mapbox-gl-js/style-spec/). The style specification is designed especially for [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js) (browser) and the Mapbox mobile SDKs (mobile) to read and understand so your map can be rendered on the page. The style controls almost everything about the map.
+**样式**是符合[Mapbox样式规范](https://docs.mapbox.com/mapbox-gl-js/style-spec/)的JSON文档。样式规范是专为Mapbox GL JS[Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js)（浏览器）和Mapbox移动SDKs（移动端）阅读和理解而设计的，因此你的地图可以在页面上呈现。样式几乎控制着地图的所有内容。
 
-## Style editor
+## 样式编辑器
 
-The Mapbox Studio style editor allows you to create a custom [style](https://docs.mapbox.com/help/glossary/style) by editing [components](#components), adding [layers](#layers), uploading custom icons, and publishing your style. Click on the name of any style listed on your [Styles page](https://studio.mapbox.com/styles/) to open it in the style editor.
+Mapbox Studio样式编辑器允许你通过编辑[组件](#组件)，添加 [图层](#图层)，上传自定义图标以及发布样式来创建自定义[样式](https://docs.mapbox.com/help/glossary/style)。点击[样式页面](https://studio.mapbox.com/styles/)列表中的任何样式的名称，你可以在样式编辑器中将其打开。
 
 {{
   <StyleEditorDiagram
@@ -30,19 +30,19 @@ The Mapbox Studio style editor allows you to create a custom [style](https://doc
   />
 }}
 
-Use the **styling panel** on the left side of the style editor to edit the appearance of map features. For styles that use components, there are two options for styling map features:
+使用样式编辑器左侧的 **样式面板** 来编辑地图要素的外观。 对于使用组件的样式，有两种用于样式化地图要素的选项：
 
-- Use the **Components** tab to style many layers at once. 
-- Use the **Layers** tab to style each layer individually or add custom layers.
+- 使用**组件**选项卡一次设置多个图层的样式. 
+- 使用**图层**选项卡可单独设置每个图层的样式或添加自定义图层。
 
-All changes made to your style will appear on the **map canvas** in the center of the style editor. You can click on the map to see all layers at a single point and when the **Select data** panel is open, you can inspect individual features from the selected tileset to view their properties. [Read more about how the map canvas works below.](#map-canvas)
+对样式所做的所有更改都将显示在样式编辑器中心的**地图画布**中。 你可以点击地图某一点来查看对应图层，并且当 **选择数据** 面板打开时，您可以检查所选瓦片集中的各个要素来查看其属性。 [阅读更多关于关地图画布如何工作的信息。.](#地图-画布)
 
-Use the toolbar along the top of the screen to adjust style settings, manage icons and fonts, export an image to print, and publish your style.
+使用屏幕顶部的工具栏来调整样式设置，管理图标和字体，导出要打印的图像以及发布样式。
 
-### Publish
+### 发布
 
-The **Publish** button in the upper right of the style editor allows you to save your style so you can use it in production applications.
+样式编辑器右上角的 **发布** 按钮可以用来保存样式，以便你在产品应用程序中使用它。
 
-Every change you make is tracked within Mapbox Studio, and saved as a **draft** version of your style. The changes will not show in any of your production applications until you click **Publish**. Updates can take up to 15 minutes to show on your live map.
+你做的每项更改都会在Mapbox Studio中进行跟踪，并保存为样式的**草稿**版本。 在单击**发布**之前，更改不会显示在你的任何产品应用程序中。 更新最多需要15分钟可以显示在实时地图上。
 
-For more information on draft vs. production styles, see [Publish your style](/studio-manual/overview/publish-your-style/#draft-vs-production-styles).
+有关草稿与产品样式的更多信息， 请查看 [发布你的样式](/studio-manual/overview/publish-your-style/#draft-vs-production-styles).
