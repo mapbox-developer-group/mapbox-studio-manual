@@ -1,6 +1,6 @@
 ---
 标题: 组件库
-描述: 在组件选项卡中，可以切换组件的可见性，编辑组件的属性，从组件弹出图层以及定义颜色和字体排版。
+描述: 在组件选项卡中，你可以切换组件的可见性，编辑组件的属性，从组件弹出图层以及定义颜色和字体排版。
 prependJs:
 - "import AppropriateImage from '../../../../components/appropriate-image';"
 - "import Browser from '@mapbox/dr-ui/browser';"
@@ -22,7 +22,7 @@ contentType: 参考
 
 {{ <StyleComponentBetaNote /> }}
 
-在**组件库**选项卡中，可以切换组件的可见性，编辑组件的属性，从组件弹出图层以及定义颜色和字体排版。
+在**组件库**选项卡中，你可以切换组件的可见性，编辑组件的属性，从组件弹出图层以及定义颜色和字体排版。
 
 {{
   <Browser>
