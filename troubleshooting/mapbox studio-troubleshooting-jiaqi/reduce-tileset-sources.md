@@ -33,7 +33,7 @@ prependJs:
 减少样式中使用的源数量的最有效方法是将来自多个数据文件或图块的数据合并到一个图块中。您可以通过几种方式执行此操作：
 
 - **GIS应用程序**：在将地理空间数据上传到Mapbox之前，请使用Mapbox外部的工具（例如QGIS或ArcGIS）合并地理空间数据。
-- **Tippecanoe**：使用我们的开源命令行工具[Tippecanoe](https://github.com/mapbox/tippecanoe#tippecanoe)，可以将多个数据文件添加到单个tileet源中，导出到MBTiles，然后一次将它们全部上传到Mapbox。
+- **Tippecanoe**：使用我们的开源命令行工具[Tippecanoe](https://github.com/mapbox/tippecanoe#tippecanoe)，可以将多个数据文件添加到单个tilset源中，导出到MBTiles，然后一次将它们全部上传到Mapbox。
 - **Mapbox Studio Classic**：使用我们的旧版桌面工具[Mapbox Studio Classic](https://github.com/mapbox/mapbox-studio-classic)将多个数据文件添加到单个tileet源中，导出到MBTiles，并将它们一次全部上传到Mapbox。在[Mapbox Studio Classic手册中](https://github.com/mapbox/mapbox-studio-classic/tree/mb-pages/docs/studio-classic-manual/03-classic-manual-sources.md#create-a-new-source)了解有关创建具有多个数据层的源的更多信息。
 
 
