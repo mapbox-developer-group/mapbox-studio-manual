@@ -1,6 +1,6 @@
 ---
-title: Layers
-description: A layer is a styled representation of data or the canvas of your map.
+标题: 图层
+描述: 图层是数据或地图画布的设计表现。
 prependJs:
 - "import AppropriateImage from '../../../../components/appropriate-image';"
 - "import Browser from '@mapbox/dr-ui/browser';"
@@ -17,14 +17,14 @@ prependJs:
 - "import StyleBuildingsZoom from '../../../../video/style-buildings-zoom.mp4';"
 - "import StyleDetails from '../../../../video/reference-styles-layers-style-details.mp4';"
 - "import StyleProperties from '../../../../video/reference-styles-layers-style-properties.mp4';"
-contentType: reference
+内容类型: 参考
 ---
 
-## Layers
+## 图层
 
-A **layer** is a styled representation of data of a single type (for example fill, line, or symbol). Layers _can_ be a part of a component, but don’t _have_ to be.
+**图层**是一种类型（例如填充，线或符号）的数据的设计表现。 图层 _可以_ 是组件的一部分，但不_必须_是。
 
-Layers power your map's visualization. Without layers, you cannot see your data. You can create multiple layers from the same data and you can filter data by attributes for styling in a layer. You can also fill the canvas with a color or pattern which will apply across the whole world.
+图层增强了地图的可视化效果。 没有图层，你将看不到数据。 你可以从同一数据创建多个图层，还可以按属性筛选数据来在图层中设置样式。你还可以在画布上填充将应用于整个世界的颜色或图案。
 
 {{
   <Browser>
@@ -36,25 +36,24 @@ Layers power your map's visualization. Without layers, you cannot see your data.
   <br />
 }}
 
-You can always access the Layers list by clicking the **Layers** tab in the upper left of the style editor. There are several options for managing layers at the top of the list, including:
+你始终可以通过点击样式编辑器左上角的**图层**标签来访问图层列表。 列表顶部有几个用于管理图层的选项，包括：
 
-- {{<Icon name='plus' inline={true} />}} **Add a custom layer** to add a new layer.
-- {{<Icon name='duplicate' inline={true} />}} **Duplicate a layer** to create a copy of an existing layer.
-- {{<Icon name='folder' inline={true} />}} {{<Icon name='nofolder' inline={true} />}} **Group** and **Ungroup** layers to style them individually and sort them.
-- {{<Icon name='noeye' inline={true} />}} {{<Icon name='eye' inline={true} />}} **Hide** and **Show** layers.
-- {{<Icon name='trash' inline={true} />}} **Delete layer** to permanently remove a layer. You can undo this using `CTRL + Z` in the current session, but this cannot be undone after you close your style.
-- {{<Icon name='menu' inline={true} />}} **Reorder layers** by clicking and dragging the {{<Icon name='menu' inline={true} />}} next to each layer list item.
+- {{<Icon name='plus' inline={true} />}} **添加一个自定义图层** 来添加新的图层。
+- {{<Icon name='duplicate' inline={true} />}} **复制图层**来创建现有图层的副本.
+- {{<Icon name='folder' inline={true} />}} {{<Icon name='nofolder' inline={true} />}}**分组**和**取消分组**图层可分别设置样式并对其进行排序。
+- {{<Icon name='noeye' inline={true} />}} {{<Icon name='eye' inline={true} />}} **隐藏** 和 **显示** 图层.
+- {{<Icon name='trash' inline={true} />}} **删除图层**，可以永久删除图层。 你可以在当前会话中使用CTRL + Z撤消此操作，但是在关闭样式后你无法撤消此操作。
+- {{<Icon name='menu' inline={true} />}} 通过点击并拖动每个图层列表项旁边的{{<Icon name='menu' inline={true} />}}，对图层进行**重新排序**。
 
-### Add layer
+### 添加图层
 
-To create a new layer, click **+** at the top of the layers panel. There are two options when adding a new layer to your style: **Data sources** and **Background layer**.
+要创建一个新层，请点击图层面板顶部的 **+** 。 在样式中添加新图层时，有两个选项：**数据源**和**背景图层**。
 
-#### Data sources
+#### 数据源
 
-Add a layer that contains specific shapes (polygons, lines, or points) that cover part of the map. A layer from data comes from custom data that you have added to your Mapbox account. See the [Geospatial data](/studio-manual/overview/geospatial-data/) section for more information on adding custom data.
+添加包含部分地图的特定形状（点，线或面）的图层。 图层的数据来自你添加到Mapbox帐户的自定义数据。 有关添加自定义数据的更多信息，请参见 [地理空间数据](/studio-manual/overview/geospatial-data/) 部分。
 
-Each layer needs data to work with, otherwise the style rules would not be applied to anything. (The exception is a background layer &mdash; see the next section for more details). To specify data for the layer, choose a **Data source** from the list of available [tilesets](https://docs.mapbox.com/help/glossary/tileset) used in your map style (_Active sources_), as well as a list of tilesets that are in your account but not used in the current style (_Unused sources_). You can use the search box to find a tileset, or upload a new tileset with the **+ Upload** button.
-
+每个图层都需要使用数据，否则样式规则将不会应用于任何内容。(例外的是一个背景图层；有关更多细节，请参见下一节)。 要为图层指定数据，请从地图样式中使用的可用[瓦片集](https://docs.mapbox.com/help/glossary/tileset)列表中选择一个“数据源”（_主要 源数据_），以及在你帐户中但未在当前样式中使用的瓦片集列表（_未使用的数据源_）。你可以使用搜索框查找瓦片集，或使用 **+上传** 按钮上传新的瓦片集。 
 {{
   <AppropriateImage
     imageId="reference-styles-layers-editor-hover-and-click-data"
@@ -63,19 +62,18 @@ Each layer needs data to work with, otherwise the style rules would not be appli
   <br />
 }}
 
-{{<Note title="Source limit">}}
-There is a limit of 15 unique sources permitted in styles saved in your Mapbox account. This count includes Mapbox tilesets like Streets or Terrain. If you reach the 15 source limit, you will see an error, `Failed to update style`. This limit is related to sources, not layers. To reduce the number of sources needed, consider combining data before uploading and using filters in the style editor to create different layers from the same source. For more information on source limits see our [Source limits in Mapbox Studio styles](https://docs.mapbox.com/help/troubleshooting/reduce-tileset-sources/) troubleshooting guide.
+{{<Note title="来源限制">}}
+Mapbox帐户中的保存的样式中最多允许有15个唯一数据源。 此数字包括Mapbox瓦片集，例如街道或地形。如果达到15个数据源限制，你将看到一个错误， `无法更新样式`。此限制与数据源有关，而与图层无关。为了减少所需的数据源数量，请考虑在上传之前合并数据，然后从样式编辑器中使用过滤器从同一来源数据创建不同的图层。有关数据源限制的更多信息，请参见[Mapbox Studio样式故障排除指南中的数据源限制](https://docs.mapbox.com/help/troubleshooting/reduce-tileset-sources/) 
 {{</Note>}}
 
 
-**Vector sources**: If you select a vector source, you'll have the following options:
+**矢量数据源**：如果选择矢量数据源，则将具有以下选项：
 
-- **Type**: allows you to select the type of layer to create either [fill](#fill-layer), [fill extrusion](#fill-extrusion-layer),  [line](#line-layer), [circle](#circle-layer), [symbol](#symbol-layer), [heatmap](#heatmap-layer), or [raster](#raster-layer) data types.
-- **Filter**: allows you to limit features that are displayed in a layer based on data properties or geometry type.
-- **Zoom extent**: sets the `min` (start) zoom and `max` (last) zoom to which you data is viewed on the map (learn more about [manually adjusting zoom extents](https://docs.mapbox.com/help/troubleshooting/adjust-tileset-zoom-extent)).
+- **类型**：允许你选择图层类型来创建[填充](#填充-图层)，[填充拉伸](#填充-拉伸-图层)，[线](#线-图层)，[点](#点-图层)，[符号](#符号-图层)，[热力图](#热力图-图层)或[栅格](#栅格-图层)数据类型。
+- **筛选**：允许你根据数据属性或几何类型限制在图层中要显示的要素。
+- **缩放程度**：设置在地图上查看数据的`最小`（开始）缩放等级和`最大`（最后）缩放等级（了解有关[手动调整缩放范围]的详细信息。(https://docs.mapbox.com/help/troubleshooting/adjust-tileset-zoom-extent)).
 
-On the canvas, you will see a preview of your data. You can click to select and view the data on the map. Hover over the data to see what data subset is below and click the **Select** button to populate that data into the layer you are creating.
-
+在画布上，你将看到数据的预览。 你可以点击选择并查看地图上的数据。 在画布上，你将看到数据的预览。 你可以点击来选择并查看地图上的数据。 将鼠标悬停在数据上以查看下面的数据子集，然后点击 **选择** 按钮以将该数据填充到你创建的图层中。
 {{
   <Video
     src={FilterSourceLayer}
@@ -84,32 +82,32 @@ On the canvas, you will see a preview of your data. You can click to select and 
   <br />
 }}
 
-**Raster sources**: If you select a raster source, your layer will automatically be assigned the _Raster_ type. The **Zoom extent** option will also be available to set the `min` (start) zoom and `max` (last) zoom to which you data is viewed on the map.
+**栅格数据源**：如果选择栅格数据源，则会为你的图层自动分配 _栅格_ 类型。**缩放范围** 选项也可用于设置在地图上查看数据的最小（开始）缩放和最大（最后）缩放。
 
-**RBG-encoded DEM sources**: If you select an RBG-encoded DEM source, your layer will automatically be assigned the _Hillshade_ type. The **Zoom extent** option will also be available to set the `min` (start) zoom and `max` (last) zoom to which you data is viewed on the map.
+**RBG-编码的数字高程模型数据源**: 如果选择RBG-编码的数字高程模型数据源，则将为你的图层自动分配 _山体阴影_ 类型。 选项也可用于设置在地图上查看数据的最小（开始）缩放和最大（最后）缩放。
 
-#### Background layer
+#### 背景图层
 
-A background layer is a style layer without an associated tileset. Background layers cover the full extent of your map canvas. You can create as many background layers as you want. To create textures for your map style, use multiple background layers.
+背景图层是与瓦片集没有关联的样式图层。背景图层覆盖了地图画布的整个范围。你可以根据需要创建多个背景图层。 要为你的地图样式创建纹理，请使用多个背景图层。
 
-To create a background layer, click **+ Add layer** at the top of the layers panel, choose the **Background layer** tab and click the **Create background layer** button.
+要创建背景层，请点击图层面板顶部的 **+添加图层**按钮 ，选择 **背景图层** 选项卡，然后点击 **创建背景图层** 按钮。
 
-Style options for background layers include:
+背景图层的样式选项包括：
 
-- [Fill color](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-color)
-- [Pattern](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-pattern)
-- [Opacity](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-opacity)
+- [填充颜色](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-color)
+- [图案](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-pattern)
+- [透明度](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-opacity)
 
-As **patterns** are created from tiled images, you can upload a custom SVG image to create a pattern effect in your map. To add SVG images:
+由于**图案**是从平铺图像创建的，因此你可以上传自定义SVG图像来在地图中创建图案效果。 要添加SVG图像
 
-1. Click **Images** in the top toolbar.
-1. Click **Upload SVG image**.
+1.点击顶部工具栏中的 **图像**。
+2.点击 **上传SVG图像**。
 
-The image will then be uploaded to your style and available for use on any layer.
+然后，图像将上传到你的样式中，并可以在任何图层上使用。
 
-### Filter layers
+### 筛选图层
 
-Click {{<Icon name='filter' inline={true} />}} Filter layers to show and hide layers in the layer list. You can filter by layer name by typing in the search bar or you can filter by value, layer type, or vector type.
+点击 {{<Icon name='filter' inline={true} />}} 筛选图层来显示或者隐藏图层列表中的图层。 你可以通过在搜索栏中输入图层名称进行筛选，也可以按值，图层类型或矢量类型进行筛选。 
 
 {{
   <Browser>
@@ -121,18 +119,17 @@ Click {{<Icon name='filter' inline={true} />}} Filter layers to show and hide la
   <br />
 }}
 
-- **Filter by value** options include Colors, Images and patterns, Fonts, Text fields, Text options, Icon options, Symbol placement, Line widths, Line options, and Fill options.
-- **Filter by layer type** options include fill, line, symbol, circle, fill-extrusion, and background.
-- **Filter by vector layers** options include all [source layers](https://docs.mapbox.com/help/glossary/source-layer/).
+- **通过值筛选** 选项包括颜色，图像和图案，字体，文本字段，文本选项，图标选项，符号位置，线宽，线选项和填充选项。
+- **通过图层类型筛选** 选项包括填充，线，符号，点，填充-拉伸和背景。
+- **通过矢量图层筛选** 选项包括所有[数据源图层](https://docs.mapbox.com/help/glossary/source-layer/).
 
 
-### Style a layer
+### 设置图层样式
 
-Each layer can be styled individually by clicking on the name of the layer in the Layer list. There are several **layer types** to choose from, which are listed below. Each layer type has a unique set of **layer properties** that can be specified. There are a few options for specifying property values. You can pick values individually, based on a data attribute, based on the zoom level, or the value of another property.
+通过点击“图层”列表中图层的名称，可以分别设置每个图层的样式。 下面列出了几种 **图层类型** 可供选择。 每种图层类型都可以指定一组唯一的 **图层属性**。有一些选项用于指定属性值。 你可以根据数据属性、缩放级别或其他属性的值分别选择值。
 
-#### Set a manual override
-
-If a layer property is controlled by a component, a {{<Icon name="lock" inline={true} />}} lock icon will appear next to the value. You can override any layer property by clicking **Set manual override**. When you override a property, it will only affect one layer property for that specific layer &mdash; other layers controlled by the component will not be affected.
+#### 设置手动覆盖
+如果图层属性是由组件控制的，则该值旁边将显示一个 {{<Icon name="lock" inline={true} />}} 锁定图标。你可以通过点击 **设置手动覆盖** 来替代任何图层属性。当你覆盖属性时，它将仅影响该特定图层的一个图层属性-受组件控制的其他图层不被影响。 
 
 {{
   <Browser>
@@ -143,11 +140,11 @@ If a layer property is controlled by a component, a {{<Icon name="lock" inline={
   </Browser>
 }}
 
-<h4 id='fill-layer'>{{<Icon name='fill' inline={true} />}} Fill layer</h4>
+<h4 id='fill-layer'>{{<Icon name='fill' inline={true} />}} 填充图层</h4>
 
-A fill layer is a style layer that displays data as filled shapes. Fill layers are typically used for setting the style of the insides of polygon features, but any feature type (polygon, linestring or point) can be styled with a fill layer.
+填充图层是将数据展示为填充形状的样式图层。 填充层是将数据显示为填充形状的样式层。 填充图层通常用于设置多边形内部要素的样式，但是任何要素类型（多边形，线段或点）都可以使用填充层设置样式。
 
-For an example of fill layer styling, see the [Make a choropleth map](https://docs.mapbox.com/help/tutorials/choropleth-studio-gl-pt-1/) tutorial.
+有关填充层样式的示例，请参考 [制作分级统计地图](https://docs.mapbox.com/help/tutorials/choropleth-studio-gl-pt-1/) tutorial.
 
 {{
   <AppropriateImage
@@ -156,105 +153,106 @@ For an example of fill layer styling, see the [Make a choropleth map](https://do
   />
 }}
 
-To add a pattern to a fill layer in the Mapbox Studio style editor:
+要将图案添加到Mapbox Studio样式编辑器中的填充图层：
 
-1. Click **Images** in the top toolbar.
-1. Click **Upload SVG image**.
-1. Select the desired fill layer from the layers panel on the left side of the style editor.
-1. Click the **Pattern** field.
-1. Click to select the desired image.
+1. 点击顶部工具栏中的 **图像**。
+2. 点击 **上传SVG图像**。
+3. 从样式编辑器左侧的图层面板中选择所需的填充图层。
+4. 点击 **图案** 字段。
+5. 点击选择所需的图像。
 
-<h4 id='fill-extrusion-layer'>{{<Icon name='extrusion' inline={true} />}} Fill-extrusion</h4>
+<h4 id='fill-extrusion-layer'>{{<Icon name='extrusion' inline={true} />}} 填充-拉伸</h4>
 
-Fill extrusion layers can be applied to sources containing polygon features to create 3D polygons. You can use a fill extrusion layer to add a 3D building layer in your style using the `building` source layer in the Mapbox Streets tileset. Use the [Light panel](#light-toolbar) with fill extrusion layers to control the color, direction, and intensity of the lighting source.
+可以将填充-拉伸图层应用于包含面要素的数据源来创建3D面。你可以使用填充-挤出图层，使用Mapbox Streets瓦片集中的 `建筑` 数据源图层来添加你的样式的3D建筑图层。 将[光面板]（＃光-顶部栏）与填充-拉伸图层一起使用，来控制光源的颜色，方向和强度。
 
-<h4 id='line-layer'>{{<Icon name='line' inline={true} />}} Line layer</h4>
+<h4 id='line-layer'>{{<Icon name='line' inline={true} />}} 线图层</h4>
 
-You can style line layers to various widths, colors, and patterns. There are also advanced options for dash arrays and blur effects. For the most part, line layers are heavily styled and transitioned between zooms. You can also duplicate layers and filter your data for more styling control. Take a look at the map style templates **Mapbox Streets** or **Mapbox Outdoors** for examples of detailed line styling with the `roads`, `tunnels`, and `bridges` data layers.
+你可以将线图层设置为各种宽度、颜色和图案。还有一些高级选项，为虚线和模糊效果。在大多数情况下，线图层样式丰富并且在不同级别下进行过渡。你还可以复制图层并过滤数据以进行更多样式控制。 看一下地图样式模板 **Mapbox Streets** 或 **Mapbox Outdoors** ，来获取具有 `道路` ，`隧道`和 `桥梁` 数据图层的详细线段样式的示例。
 
-To add a pattern to a line layer in the Mapbox Studio style editor:
+要将样式添加到Mapbox Studio样式编辑器中的线图层：
 
-1. Click **Images** in the top toolbar.
-1. Click **Upload SVG image**.
-1. Select the desired line layer from the layers panel on the left side of the style editor.
-1. Click the **Pattern** field.
-1. Click to select the desired image.
+1. 点击顶部工具栏中的 **图像**。
+2. 点击 **上传SVG图像**。
+3. 从样式编辑器左侧的图层面板中选择所需的线段图层。
+4. 点击 **图案** 字段。
+5. 点击选择所需的图像。
 
-You can also select a previously-uploaded image from this panel.
+你也可以从此面板中选择以前上传的图像。
 
-<h4 id='circle-layer'>{{<Icon name='circle' inline={true} />}} Circle layer</h4>
+<h4 id='circle-layer'>{{<Icon name='circle' inline={true} />}} 点图层 </h4>
 
-A circle layer is a style layer that displays data as circles. You can use circle layers to represent scaled or interactive data, and you can use them with data that is mostly point features. In the styling panel for the layer, click the input box for each property to change its value. Hover over a property name in the panel to see its definition.
+点图层是将数据显示为圆圈的样式图层。你可以使用点图层来展示缩放或交互式数据，并且可以将它们用于主要是点要素的数据。 在图层的样式面板中，点击每个属性的输入框以更改它的值。 将鼠标悬停在面板中的属性名称上可以查看它的定义。
 
-##### Style by filter
+##### 通过筛选设置样式
 
-Circle data can show varying data values. You can make separate circle layers, filter by an attribute in your data, and style each based on the data attribute.
+点数据可以展示变化的数据值。 你可以制作单独的点图层，按数据中的属性过滤，并根据数据属性设置每个样式。
 
-For example, to style earthquake data by magnitude, you can:
+例如，要按震级对地震数据进行样式设置，你可以：
 
-- Create three layers each using earthquakes as the data source.
-- Filter the data based on magnitude (small, medium, large).
-- Define different style properties for each one, styling higher-magnitude earthquakes as larger, darker circles.
+- 使用地震作为数据源分别创建三个图层。
+- 根据大小（小，中，大）筛选数据。
+- 为每一个定义不同的样式属性，将高震级设置为更大，更暗的圆圈。
 
-This data can also be re-styled on-the-fly in your map with Mapbox GL JS based on user interaction or attributes in the data.
+还可以根据用户交互或数据中的属性，使用Mapbox GL JS在地图中设置实时样式。
 
-<h4 id='symbol-layer'>{{<Icon name='transform-uppercase' inline={true} />}} Symbol layer</h4>
+<h4 id='symbol-layer'>{{<Icon name='transform-uppercase' inline={true} />}} 符号图层</h4>
 
-Symbol layers are the most complex style type in Mapbox Studio. The symbol layer type offers detailed typographic styling options for your labels and map data. Symbol layer styling is separated into four main groups: **Text**, **Icon**, **Position**, and **Placement**.
+符号图层是Mapbox Studio中最复杂的样式类型之一。符号图层类型为标签和地图数据提供详细的字体样式选项。符号图层样式分为四个主要组：**文本**，**图标**，**位置**和**放置**。Symbol layers are the most complex style type in Mapbox Studio. The symbol layer type offers detailed typographic styling options for your labels and map data. Symbol layer styling is separated into four main groups: **Text**, **Icon**, **Position**, and **Placement**.
 
-##### Text
+##### 文本
 
-Control the typography contained on your layer in the Text section.
+在“文本”部分中控制图层所包含的字体。
 
-*Fonts*: You can only set fonts on [symbol](#symbol-layer) layer types. Custom fonts can be uploaded using the **Fonts** toolbar item on the left of the style editor. Set fonts from the **Style** tab of each `symbol` layer, under **Text**, in the `Font` input field. Each list of unique font pairings between primary and fallback font(s) will create a new fontstack.
+*字体*: 你只能在[符号]（#符号-图层）图层类型上设置字体。 可以使用样式编辑器左侧的 **字体** 工具栏项目上传自定义字体。在每个`符号`图层的 **样式** 标签下方的 **文本** 栏中的 **字体** 字段里设置字体。主字体和备用字体之间的唯一字体配对的每个列表将各自创建一个新的字体库。
 
-A **fontstack** is an ordered list consisting of a _primary font_ and _optional fallback font(s)_. An example fontstack:
+**字体库** 是由 _主要字体_ 和 _可选的备用字体_ 组成的有序列表。 一个示例字体库：
 
 `"Open Sans Regular", "Arial Unicode MS Regular"`
 
-When your primary font has missing glyphs, the text will be rendered in the fallback font instead. The default fallback font set by Mapbox Studio is `Arial Unicode MS Regular`. Unicode fonts include more glyphs than conventional fonts, allowing for better multilingual coverage.
+当你的主要字体缺少字形时，该文本将以备选字体呈现。 Mapbox Studio设置的默认备选字体为 `Arial Unicode MS Regular` 。 Unicode字体比常规字体包含更多的标志符号，从而可以实现更好的多语言覆盖。
 
-*Language*: When building a map from a Mapbox template style, map labels will appear in English by default. You can change the language of your map's labels directly in the [Mapbox Studio](https://studio.mapbox.com) style editor. All Mapbox template maps use the Mapbox Streets vector tileset for map features. For a list of languages available, see the [Mapbox Streets vector tile reference](https://docs.mapbox.com/vector-tiles/reference/mapbox-streets-v8/#overview).
+*语言*: 从Mapbox模板样式构建地图时，默认情况下，地图标签将以英文显示。 你可以直接在 [Mapbox Studio]（https://studio.mapbox.com） 样式编辑器中更改地图标签的语言。 所有Mapbox模板地图均使用Mapbox Streets矢量瓦片集作为地图要素。 有关可用语言的列表，请参见[Mapbox Streets 矢量瓦片参考](https://docs.mapbox.com/vector-tiles/reference/mapbox-streets-v8/#overview)。
 
-How to change languages:
+怎么更改语言：
 
-1. Create a new style or edit an existing one in [Mapbox Studio](https://studio.mapbox.com/styles/).
-2. Select the layer that contains the labels you'd like to edit.
-3. Under the **Text** tab, click the current value in the **Text field**. A panel will appear with all language options for the layer.
-4. Click the desired language; the map will update on select.
+1. 在[Mapbox Studio](https://studio.mapbox.com/styles/)中创建新样式或编辑现有样式。
+2. 选择包含你要编辑的标签的图层。
+3. 在 **文本** 选项卡下，点击 **文本字段** 中的当前值。 将出现一个面板，其中包含该图层的所有语言选项。
+4. 点击所需的语言，地图将在选择时更新。
 
-{{<Note title="Right-to-left language support">}}
-Mapbox Studio loads the [`mapbox-gl-rtl-text`](https://github.com/mapbox/mapbox-gl-rtl-text) plugin by default. This plugin adds support for text in the Arabic and Hebrew languages, which are displayed right-to-left.
+{{<Note title="阅读顺序从右到左的语言支持">}}
+Mapbox Studio默认会加载[`mapbox-gl-rtl-text`](https://github.com/mapbox/mapbox-gl-rtl-text)插件。 该插件增加了对从阿拉伯语到希伯来语的文本的支持，这些文本从右到左显示。
 {{</Note>}}
 
-##### Icon
+##### 图标
 
-Define [Maki](https://labs.mapbox.com/maki-icons/) icons that are available within Mapbox Studio or add your own custom icons in the Icon styling section. To add an image to a symbol layer in the Mapbox Studio style editor:
+定义Mapbox Studio中可用的[Maki](https://labs.mapbox.com/maki-icons/)图标，或在图标样式部分中添加你自己的自定义图标。 要将图像添加到Mapbox Studio样式编辑器中的符号图层：
 
-1. Click **Images** in the top toolbar.
-1. Click **Upload SVG image**.
-1. Select the desired symbol layer from the layers panel on the left side of the style editor.
-1. From the **Style** tab select the **Icon** tab.
-1. Click the **Image** field.
-1. Click to select the desired image.
+1. 点击顶部工具栏中的 **图像**。
+2. 点击 **上传SVG图像**。
+3. 从样式编辑器左侧的图层面板中选择所需的符号图层。
+4. 从 **样式**标签中选择 **图标** 标签。
+5. 点击 **图像** 字段。
+6. 点击选择所需的图像。
 
-##### Position
+##### 位置
 
-Position styling allows you to choose alignment, rotation, and offset for your icons and text.
+位置样式允许你为图标和文本选择对齐方式，旋转方式和偏移量。
 
-##### Placement
+##### 放置
 
-Placement styling controls placement of symbols, how symbols rotate on a map, and collision behavior for text and icon symbols among each other.
+放置样式控制符号的放置，符号在地图上的旋转方式以及文本和图标符号之间的碰撞行为。
 
-<h4 id='heatmap-layer'>{{<Icon name='flame' inline={true} />}} Heatmap layer</h4>
+<h4 id='heatmap-layer'>{{<Icon name='flame' inline={true} />}} 热力图</h4>
 
-A heatmap is a data visualization in which a range of colors represent the density of points in a particular area. Adding a source layer as a heatmap layer allows you to represent the layer's features in terms of their proximity to one another. Heatmap layers in Mapbox Studio have several configurable properties that allow you to customize your heatmap:
+热力图是一种数据可视化，其中一系列颜色表示特定区域中点的密度。 通过将数据源图层添加为热力图图层，你可以根据图层的要素彼此之间的接近程度来表示它们。 Mapbox Studio中的热力图图层具有几个可配置的属性，可让你自定义热图：
 
-- `color`: Defines the heatmap’s color gradient, from a minimum value to a maximum value. You can adjust the density and color of each stop individually, as well as add and delete stops. For inspiration on color choices for your heatmap, try [Color Brewer](http://colorbrewer2.org/).
-- `opacity`: Controls the global opacity of the heatmap layer.
-- `radius`: Sets the radius for each point in pixels. As the radius number increases, the heatmap will get smoother and have less detail.
-- `weight`: Measures how much each individual point contributes to the appearance of your heatmap. Heatmap layers have a weight of one by default, which means that all points are weighted equally. Increasing the weight property to five has the same effect as placing five points in the same location. You can use the **Style across data range** and **Style with data conditions** options to set the weight of your points based on specified properties.
-- `intensity`: A multiplier on top of the weight property. Intensity is primarily used as a convenient way to adjust the appearance of the heatmap based on zoom level.
+- `颜色`: 定义热力图的颜色梯度，从最小值到最大值。 你可以分别调整每个节点的密度和颜色，以及添加和删除节点。 对于你的热力图颜色选择的启发，请尝试[Color Brewer](http://colorbrewer2.org/)。
+- `透明度`: 控制热力图图层的全局不透明度。
+- `半径`: 设置每个点的半径（以像素为单位）。 随着半径的扩大，热力图将变得更平滑且细节更少。
+- `权重`: 测量每个点对热力图外观的影响。默认情况下，热力图图层的权重为1，这意味着所有点的权重均相等。将权重属性增加到5的效果与在同一位置放置5个点的效果相同。你可以使用 **跨数据范围的样式** 和 **具有数据条件的样式** 选项来基于指定的属性设置点的权重。
+
+- `强度`: 权重属性顶部的乘数。 强度主要用作基于缩放级别调整热图外观的便捷方式。
 
 {{
   <Browser>
@@ -265,13 +263,13 @@ A heatmap is a data visualization in which a range of colors represent the densi
   </Browser>
 }}
 
-<h4 id='raster-layer'>{{<Icon name='raster' inline={true} />}} Raster layer</h4>
+<h4 id='raster-layer'>{{<Icon name='raster' inline={true} />}} 栅格图层</h4>
 
-Raster layers are created from GeoTIFF sources. GeoTIFFs are georeferenced images, and the available style properties include options you may associate with editing images, like opacity, saturation, contrast, and brightness.
+栅格图层是从GeoTIFF源创建的。 GeoTIFFs是地理参考图像，可用的样式属性包括你可以与编辑图像相关联的选项，例如不透明度，饱和度，对比度和亮度。
 
-<h4 id='hillshade-layer'>{{<Icon name='mountain' inline={true} />}} Hillshade layer</h4>
+<h4 id='hillshade-layer'>{{<Icon name='mountain' inline={true} />}} 山体阴影图层 </h4>
 
-Under the available sources when you create a new layer there’s a new raster-dem source: Mapbox Terrain RGB. When selected, it uses the hillshade layer type to provide many properties to style it.
+当你创建新图层时，在可用数据源下有一个新的栅格-DEM数据源：Mapbox Terrain RGB。 选中后，它将使用山体阴影图层类型提供的许多属性来为其设置样式。
 
 {{
   <Browser>
@@ -282,17 +280,17 @@ Under the available sources when you create a new layer there’s a new raster-d
   </Browser>
 }}
 
-<h4 id='background-layer-properties'>{{<Icon name='globe' inline={true} />}} Background layer</h4>
+<h4 id='background-layer-properties'>{{<Icon name='globe' inline={true} />}} 背景图层</h4>
 
-Properties for background layers include:
+背景图层的属性包括：
 
-- [Color](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-color)
-- [Pattern](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-pattern)
-- [Opacity](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-opacity)
+- [颜色](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-color)
+- [图像](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-pattern)
+- [透明度](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-background-opacity)
 
-For more information on background layers, see the [Background layer](#background-layer) section above.
+有关背景图层的更多信息，请参见上面的[背景层]（#背景-图层）部分。
 
-**Layer properties**: The available properties for each layer vary by layer type. You can learn about the available properties for each layer type in the style editor by clicking {{<Icon name='caret-right' inline={true} />}}**Details**.
+**图层属性**: 每个图层的可用属性因图层类型而异。 你可以通过点击{{<Icon name ='caret-right'inline = {true} />}} **详情** 了解样式编辑器中每种图层类型的可用属性。
 
 {{
   <Browser>
@@ -304,11 +302,13 @@ For more information on background layers, see the [Background layer](#backgroun
   <br />
 }}
 
-Follow the links in the sections below to read more about the properties available for each layer type in more detail in the [Mapbox Style Specification](https://docs.mapbox.com/mapbox-gl-js/style-spec).
+了解更多[Mapbox样式规范]（https://docs.mapbox.com/mapbox-gl-js/style-spec）中可用于每种图层类型的属性，请参照链接内容。
 
-### Value options
 
-You can specify the values for each available property individually for each layer using the **Style** panel. You can also quickly match the values to the values in other layers using **Apply existing value**, set a value that changes based on **zoom level**, a **data range**, or **data conditions**, or create and use a custom **formula** to style a layer.
+### 值选项
+
+你可以使用 **样式** 面板为每个图层分别指定每个可用属性的值。 你还可以使用 **应用现有值** ，根据 **缩放级别** ， **数据范围** 或 **数据条件** 来设置一个随其他值而快速匹配的值，或创建并使用自定义 **公式** 为图层设置样式。
+
 
 {{
   <Browser>
@@ -320,17 +320,17 @@ You can specify the values for each available property individually for each lay
   <br />
 }}
 
-Read more about how to use each of these options for specifying property values below.
+了解更多关于如何使用这些选项的下面指定的属性值。
 
-#### Set value
+#### 设置值
 
-Click on each property to edit the value directly.
+点击每个属性直接编辑值。
 
-#### Style across zoom range
+#### 缩放范围内的样式
 
-You can choose style properties based on zoom level by choosing **Style across zoom range**. Values can be specified for any number of stops at any specified zoom level.
+你可以通过选择 **跨缩放范围的样式** 来基于缩放级别选择样式属性。 可以在任何的缩放级别随时停止来指定任何数量的值。
 
-This is useful where contrast at high zoom levels requires different colors to have the same effect at lower zoom levels or to slowly fade in features that appear at higher zoom levels. Here's an example from our [Create a custom style tutorial](https://docs.mapbox.com/help/tutorials/create-a-custom-style):
+当在高缩放级别的对比度要求不同的颜色在较低的缩放级别具有相同的效果或使在较高的缩放级别出现的功能缓慢消失时，此功能很有用。 这是我们的[创建自定义样式教程]中的示例(https://docs.mapbox.com/help/tutorials/create-a-custom-style)。
 
 {{
   <Browser>
@@ -341,19 +341,19 @@ This is useful where contrast at high zoom levels requires different colors to h
   </Browser>
 }}
 
-##### Rate of change
+##### 变化率
 
-There are several different options for the rate of change:
+对于变化率有几种不同的选择:
 
-**Linear**: By default, the rate of change is `linear`, meaning a difference of one zoom level increment will increase or decrease a value by the same amount.
+**线性的**: 默认情况下，变化率是 `线性`的 ，这意味着一个缩放级别增量的数量将使值增加或减少相同的数量。
 
-**Exponential**: A linear rate of change can be logical for many properties, but since objects in perspective increase in size exponentially as they get closer, the `exponential` option allows ramps to have a different _base_, meaning that you can customize the curve of how much a zoom level increase affects a property change over time. For example, you might visualize the population of counties in a state by proportionally scaling the layer's `Color` property from yellow to red for populations between 0 and 10 million people.
+**指数的**: 线性变化率对于许多属性而言是合乎逻辑的，但是由于透视图中的对象随着距离的增大而呈指数增加，因此`指数`选项允许倾道具有不同的 _基础_ ，这意味着你可以自定义曲线的大小来了解缩放级别的增加会影响属性随时间的变化。 例如，你可以通过将0到1000万人之间的图层的 `颜色` 属性从黄色成比例地缩放到红色来可视化某个州的人口。
 
-**Cubic Bézier**: The `cubic-bezier` option interpolates using the cubic Bézier defined by the given control points. This can be used to create non-linear, non-exponential effects like the to CSS transition properties `ease-in` and `ease-in-out`.
+**贝塞尔曲线**: `贝塞尔曲线` 选项使用给定控制点定义的贝塞尔曲线进行插值。 这可以用来创建非线性，非指数效果，例如CSS过渡属性`ease-in`和`ease-in-out`。 
 
-**Step**: The `step` option produces discrete, stepped results by evaluating a piecewise-constant function defined by stops. This option is helpful if you want complete control over the property values used in defined intervals rather than interpolating values between stops. For example, you might visualize the population of counties in a state by assigning the color yellow to counties with less than 500,000 people, orange for 500,000-1,000,000 people, and red for counties with more than 1,000,000 people.
+**Step**: `step`选项通过计算一个由停止定义的分段常数函数来产生离散的、阶梯式的结果。如果要完全控制在定义的时间间隔中使用的属性值，而不是在节点之间进行插值，则此选项很有用。 例如，你可以通过将黄色分配给少于500,000人的州，将橙色分配给500,000-1,000,000人的州，将红色分配给人口超过100万的州，来形象化一个州的人口。
 
-Here's an example of interpolating from data with a stepped rate of change from the [Make a choropleth map with Mapbox tutorial](https://docs.mapbox.com/help/tutorials/choropleth-studio-gl-pt-1/):
+这是一个示例，该示例是从[使用Mapbox教程制作分及统计地图]中以逐步的变化率从数据进行插值(https://docs.mapbox.com/help/tutorials/choropleth-studio-gl-pt-1/):
 
 {{
   <Browser>
@@ -364,15 +364,15 @@ Here's an example of interpolating from data with a stepped rate of change from 
   </Browser>
 }}
 
-#### Style across data range
+#### 跨数据范围的样式
 
-Style properties can be applied based on the value of a tileset field by choosing **Style across data range**. To use **Style across data range**, you must have a numeric data field for which you can create stops. This option is not available for every style property. For example, you can interpolate from data for the color of fill layers, but not for patterns.
+通过选择 **跨数据范围的样式** ，可以基于瓦片集字段的值应用样式属性。要使用**跨数据范围的样式**，必须具有一个数字数据字段，可以为其创建节点。不是每个样式属性都提供此选项。 例如，你可以从数据中插入填充图层的颜色，但不能插入图案。
 
-#### Style with data conditions
+#### 带有数据条件的样式
 
-Add conditional logic to your styles with **Style with data conditions**. Apply a style property to all features in a layer with a given data field value. The value in this field can be a `string`, `number`, or `boolean`. You can also use multiple values in each conditional statement.
+使用 **带数据条件的样式** 将条件逻辑添加到样式中。Add conditional logic to your styles with **Style with data conditions**. 将样式属性应用于具有给定数据字段值的图层中的所有要素。 此字段中的值可以是`字符`, `数字`, or `布尔值`。 
 
-For example, in the Mapbox Basic style, landuse types are styled by `class`. If `class` is equal to `park` or `pitch`, the feature's fill color is green. If the `class` of a feature is equal to `hospital`, the feature's fill color is pink. Another condition is applied if the `class` is equal to `school`, and there is a fallback value for any feature whose `class` field does not match any of the conditions (or does not exist at all).
+例如，在Mapbox Basic样式中，土地类型由`class`设置样式。 如果`class`等于`公园`或`运动场`，则特征的填充颜色为绿色。 如果要素的`class`等于`医院`，则要素的填充颜色为粉红色。 如果`class`等于`学校`，则应用另一个条件，并且其`class`字段与任何条件都不匹配（或根本不存在）的任何要素都有一个备选值。
 
 {{
   <AppropriateImage
@@ -381,11 +381,11 @@ For example, in the Mapbox Basic style, landuse types are styled by `class`. If 
   />
 }}
 
-#### Use a formula
+#### 使用公式
 
-The formula editor includes a full library of expressions with inline documentation for each expression. Use the formula editor for any expression that varies from the patterns used in the **Style across zoom range**, **Style across data range**, or **Style with data conditions** options, including any expression that uses math.
+公式编辑器包括完整的表达式库，每个表达式都有内联文档。 对于任何不同于 **跨缩放范围的样式**、**跨缩放范围的样式**、或**跨数据范围的样式**选项的表达式(包括任何使用数学的表达式)，请使用公式编辑器。
 
-Below is an example of a formula that converts units in Mapbox Terrain’s contour layer from meters to feet.
+以下是一个公式示例，该公式可将Mapbox Terrain轮廓图层中的单位从米转换为英尺。
 
 {{
   <Browser>
@@ -396,17 +396,17 @@ Below is an example of a formula that converts units in Mapbox Terrain’s conto
   </Browser>
 }}
 
-#### Reset value to default
+#### 将值重置为默认值
 
-Remove any data or zoom-based styling by clicking **Reset value to default**.
+通过点击 **将值重置为默认值** 来删除所有基于数据或基于缩放的样式。
 
-#### Apply existing value
+#### 应用现有的值
 
-Use **Apply existing value** to edit the value to match an existing value. Scroll through other layer properties to match the current layer to other layers in the style.
+使用 **应用现有的值** 来编辑该值来匹配现有值。滚动浏览其他图层属性，来使当前图层与样式中的其他图层匹配。
 
-### Edit property as JSON
+### 将属性编辑为JSON
 
-The Mapbox Studio style editor allows you to edit a style property's JSON directly. The style property JSON editor will facilitate workflows for advanced users and early adopters who want to use features not yet supported by the graphical interface, such as [identity functions](https://docs.mapbox.com/mapbox-gl-js/style-spec/#other-function).
+Mapbox Studio样式编辑器允许你直接编辑样式属性的JSON。样式属性JSON编辑器将为希望使用图形界面尚不支持的功能（例如[恒等函数]）的高级用户和早期采用者提供便利的工作流程(https://docs.mapbox.com/mapbox-gl-js/style-spec/#other-function).
 
 {{
   <Browser>
@@ -419,16 +419,15 @@ The Mapbox Studio style editor allows you to edit a style property's JSON direct
 }}
 
 {{<Note>}}
-The JSON editor can be toggled for any type of value. It will be open and _cannot be closed_ if you have entered a value that can _only_ be edited in the JSON editor.
+JSON编辑器可以切换为任何类型的值。如果你输入了值那么只可以在JSON编辑器中进行编辑，它将处于打开状态，而不能关闭。
 {{</Note>}}
 
-### Select data
+### 选择数据
 
-There is a **Select data** panel for each layer. You can find it by clicking on the layer in the Layer list and then clicking the Select data tab. There are several options available to change the underlying data source.
+每各图层都有一个 **选择数据** 面板。 你可以通过在图层列表中点击该层，然后点击选择数据选项卡来找到它。 有几个选项可用于更改基础数据源。
 
-{{<Note title="Layer from data">}}
-  These are the same options that are available when adding a new [layer from data](#layer-from-data) to your style.
-{{</Note>}}
+{{<Note title="数据图层">}}
+  这些选项与在样式中添加新[数据图层](#数据图层)[数据图层]时可用的选项相同。
 
 {{
   <Browser>
@@ -440,41 +439,41 @@ There is a **Select data** panel for each layer. You can find it by clicking on 
   <br />
 }}
 
-Read more about the available fields in the **Select data** panel below.
+在下面的 **选择数据** 面板中详细了解可用字段。
 
-#### Source
+#### 来源
 
-This shows the tileset source that is used in the layer. Click on the name of the tileset to change the source to another tileset from your Mapbox account. The source can be either a vector tileset or a raster tileset. The remaining properties available on the **Select data** panel will vary based on whether the source tileset is a vector or raster source.
+这显示了在图层中使用的瓦片集数据源。 点击瓦片集的名称，从你的Mapbox帐户将数据源更改为另一个瓦片集。 数据源可以是矢量瓦片集或栅格瓦片集。 **选择数据** 面板上可用的其余属性将根据瓦片集数据源是矢量还是栅格数据源而有所不同。
 
-#### Type
+#### 样式
 
-For layers with **vector sources**, the available source types are:
+对于具有 **矢数据源** 的图层，可用的数据源样式为：
 
-- <span class='inline-block'>{{<Icon name='fill' inline={true} />}} Fill</span>
-- <span class='inline-block'>{{<Icon name='extrusion' inline={true} />}} Fill-extrusion</span>
-- <span class='inline-block'>{{<Icon name='circle' inline={true} />}} Circle</span>
-- <span class='inline-block'>{{<Icon name='line' inline={true} />}} Line</span>
-- <span class='inline-block'>{{<Icon name='transform-uppercase' inline={true} />}} Symbol</span>
-- <span class='inline-block'>{{<Icon name='flame' inline={true} />}} Heatmap</span>
+- <span class='inline-block'>{{<Icon name='fill' inline={true} />}} 填充</span>
+- <span class='inline-block'>{{<Icon name='extrusion' inline={true} />}} 填充-拉伸</span>
+- <span class='inline-block'>{{<Icon name='circle' inline={true} />}} 点</span>
+- <span class='inline-block'>{{<Icon name='line' inline={true} />}} 线</span>
+- <span class='inline-block'>{{<Icon name='transform-uppercase' inline={true} />}} 符号 </span>
+- <span class='inline-block'>{{<Icon name='flame' inline={true} />}} 热力图 </span>
 
-Some tilesets have a combination of points, linestrings, and polygons. Use filtering by *geometry type* (see [Filter](/studio-manual/reference/styles/#filter) section below) to have your layer style rules apply to only features of the selected geometry types.
+某些瓦片集包含点，线段和多边形的组合。使用按 *几何类型* 筛选（请参见下面的“筛选”部分）可将图层样式规则仅应用于所选几何类型的要素。
 
-For layers with **raster sources**, the only source type is {{<Icon name='raster' inline={true} />}} Raster.
+于具有 **栅格数据源** 的图层，唯一的数据源类型是 {{<Icon name='raster' inline={true} />}} 栅格。
 
-#### Filter
+#### 过滤器
 
-The filter option allows you to limit the features that are displayed in a layer based on a data property or geometry type.
+过滤器选项使你可以基于数据属性或几何类型来限制图层中显示的要素。
 
-When you filter by data field, you're styling the layer based on a smaller segment of the tileset based on its attributes. This can be useful to highlight specific features in a tileset, or you can use it to classify data into sequential groups using multiple layers.
+当你按数据字段过滤时，你将根据瓦片集的较小片段的属性为其设置样式。 这对于突出显示瓦片集中的特定功能很有用，或者你可以使用它通过多个图层将数据分类到连续的组中。
 
-To filter data based on field value:
+要根据字段值过滤数据：
 
-1. Click **+ Create filter** to bring up a list of data fields in your tileset (including **geometry-type**).
-2. Select the data field you would like to filter by.
-3. After the new _Data field_ is added to your filter list, use the dropdown to specify how you would like to construct the filter. Options include **is**, **is not**, **>** (greater than), **<** (less than), **>=** (greater than or equal to), and **<=** (less than or equal to).
-4. Click inside the box to define the value to apply to the filter. If you are using Mapbox data, a drop-down menu of potential values appears. If you are using custom data, you have to type in the value.
-5. Click **+ Add another condition** to add an additional filters.
+1. 点击 **+创建过滤器** ，将弹出一个列表的数据字段在你的瓦片集中(包括**几何类型**)。
+2. 选择你要过滤的数据字段。
+3. 将新的 _数据字段_ 添加到过滤器列表之后，请使用下拉列表指定创建过滤器的方式。 选项包括 **是** ，**不是** ，**>**（大于），**<**（小于），**>= **（大于或等于），和 **<=**（小于或等于）。
+4. 在框内点击来定义要应用于过滤器的值。 如果你使用的是Mapbox数据，则会出现一个潜在值的下拉菜单。 如果你使用自定义数据，则必须输入该值。
+5. 点击 **+添加其他条件** 来添加其他过滤器。 
 
-#### Zoom extents
+#### 缩放范围
 
-Set a minimum and maximum zoom. This will only work if tilesets exist at a specific zoom levels. For more information on adjusting the zoom extent of a tileset, read our [troubleshooting guide](https://docs.mapbox.com/help/troubleshooting/adjust-tileset-zoom-extent/).
+设置最小和最大缩放。 仅当瓦片集存在于特定的缩放级别时，这才起作用。有关调整瓦片集缩放范围的更多信息， 请阅读我们的[故障排除指南](https://docs.mapbox.com/help/troubleshooting/adjust-tileset-zoom-extent/).
