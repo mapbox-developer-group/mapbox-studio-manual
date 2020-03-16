@@ -28,7 +28,7 @@ prependJs:
 
 
 {{<Note>}}
-如果你以前下载过Mapbox Studio样式，则可以通过缩压缩样式然后上传`style.json`文件，将其上传到Mapbox Studio样式编辑器。 成功上传样式后，将引用与样式相关的所有雪碧图，字体和其他资源。
+如果你以前下载过Mapbox Studio样式，则可以通过解压样式然后上传`style.json`文件，将其上传到Mapbox Studio样式编辑器。 成功上传样式后，将引用与样式相关的所有雪碧图，字体和其他资源。
 
 Mapbox帐户中的保存的样式中最多允许有15个唯一数据源。 此数字包括Mapbox瓦片集，例如街道或地形。如果达到15个数据源限制，你将看到一个错误， `无法更新样式`。此限制与数据源有关，而与图层无关。为了减少所需的数据源数量，请考虑在上传之前合并数据，然后从样式编辑器中使用过滤器从同一来源数据创建不同的图层。有关数据源限制的更多信息，请参见[Mapbox Studio样式故障排除指南中的数据源限制](https://docs.mapbox.com/help/troubleshooting/reduce-tileset-sources/)
 {{</Note>}}
